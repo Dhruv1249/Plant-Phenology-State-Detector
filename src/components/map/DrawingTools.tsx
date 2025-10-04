@@ -55,12 +55,12 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
   const [tourIndex, setTourIndex] = useState(0);
   const [tourRect, setTourRect] = useState<{ top: number; left: number; width: number; height: number } | null>(null);
 
-  // --- FIX #1: Safely create the pixelOffset object ---
+  // --- FIX #1: Safely create the pixelOffset object (type-safe) ---
   // We use useMemo to create this object only once, and only when `window.google` is available.
-  const infoWindowOffset = useMemo(() => {
-    // Check if google maps API is loaded
-    if (typeof window.google === 'object' && typeof window.google.maps === 'object') {
-      return new window.google.maps.Size(0, -45);
+  const infoWindowOffset = useMemo<google.maps.Size | undefined>(() => {
+    if (typeof window !== 'undefined' && (window as any).google && (window as any).google.maps) {
+      // cast to google.maps.Size for TypeScript compatibility
+      return new (window as any).google.maps.Size(0, -45) as google.maps.Size;
     }
     return undefined;
   }, []);
@@ -373,7 +373,7 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
             {isHovered && (
               <InfoWindow
                 position={result.location}
-                pixelOffset={infoWindowOffset} // Use the safely created offset
+                pixelOffset={[0,-45]}
                 onCloseClick={() => setHoveredBiomeKey(null)}
                 headerDisabled={true}
                 className="hover-infowindow">
@@ -530,18 +530,18 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
               font-style: italic;
             }
 
-            /* These rules target Google's default elements to make them disappear */
-            .gm-style .gm-style-iw-c {
-              padding: 0 !important;
-              border-radius: 8px !important;
-              background-color: transparent !important;
+            /* --- Stronger dark mode override for Google InfoWindow --- */
+            .gm-style .gm-style-iw-c,
+            .gm-style .gm-style-iw-tc::after {
+              background: transparent !important;
               box-shadow: none !important;
+              border: none !important;
             }
             .gm-style .gm-style-iw-d {
               overflow: hidden !important;
             }
             .gm-style-iw-tc::after {
-              display: none; /* Hides the little arrow pointing down */
+              display: none !important; /* Hides the little arrow pointing down */
             }
             div[role="dialog"] > button {
               display: none !important; /* Hides the default close button */
