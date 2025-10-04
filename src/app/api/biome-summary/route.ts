@@ -71,6 +71,7 @@ Follow these rules strictly:
 3.  **Tone:** The writing style must be dense, factual, and encyclopedic. Do not use conversational language or speculative information. Never use scientific names.
 4.  **Output Format:** Your ENTIRE response MUST be a single, valid JSON object. The keys of the object MUST be the biome codes (e.g., "Cfa"), and the values MUST be the generated summary strings.
 
+YOUR RESPONSE MUST ALWAYS BE A VALID JSON OBJECT YOU CANNOT DISOBEY THIS RULE
 Here is the data for the biome summaries you need to generate:
 ${JSON.stringify(biomesToFetch, null, 2)}
 `.trim();

@@ -10,8 +10,16 @@ interface DrawingToolsProps {
   onToggleDarkMode: () => void;
   apiUrl: string;
 }
-interface Species { scientific_name: string; common_name: string; phenophase: string; }
-interface Pest { scientific_name_pest: string; common_name_pest: string; }
+interface Species {
+  scientific_name: string;
+  common_name: string;
+  phenophase: string;
+  timing_prediction?: string; // <-- MODIFIED: Added new optional field
+}
+interface Pest {
+  scientific_name_pest: string;
+  common_name_pest: string;
+}
 interface BiomeResult {
   biome: string;
   biome_name: string;
@@ -29,21 +37,21 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
   const [drawingManager, setDrawingManager] = useState<google.maps.drawing.DrawingManager | null>(null);
   const [shapes, setShapes] = useState<google.maps.MVCObject[]>([]);
   const [selectedTool, setSelectedTool] = useState<string>('select');
-  
-  const [analysisMonth, setAnalysisMonth] = useState<number>(10);
-  const [analysisYear, setAnalysisYear] = useState<number>(2025);
+
+  const [analysisMonth, setAnalysisMonth] = useState<number>(new Date().getMonth() + 1);
+  const [analysisYear, setAnalysisYear] = useState<number>(new Date().getFullYear() + 1);
   const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
   const [isLoadingAnalysis, setIsLoadingAnalysis] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedBiome, setSelectedBiome] = useState<BiomeResult | null>(null);
-  
+
   // --- State management for TWO types of summaries ---
   const [biomeSummaryMap, setBiomeSummaryMap] = useState<Record<string, string>>({}); // For overall biome overviews
   const [isBiomeSummaryLoading, setIsBiomeSummaryLoading] = useState<boolean>(false); // Loading state for overviews
-  
+
   const [detailSummaryMap, setDetailSummaryMap] = useState<Record<string, string>>({}); // Handles both species and pests
   const [isDetailSummaryLoading, setIsDetailSummaryLoading] = useState<boolean>(false); // Loading state for a specific detail
-  
+
   const [activeDetailKey, setActiveDetailKey] = useState<string | null>(null); // Handles both species and pests
 
   // --- State for hover info window ---
@@ -63,7 +71,7 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
         setTourActive(false);
         return;
       }
-    } catch {}
+    } catch { }
 
     const defs = [
       { selector: '[data-tour="tools-shapes-group"]', title: 'Draw tools', content: 'Use Rectangle, Circle, or Polygon to draw an area for analysis.' },
@@ -105,7 +113,7 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
   }, [tourActive, tourSteps, tourIndex]);
 
   const finishTour = () => {
-    try { localStorage.setItem('tour_drawing_tools_completed', '1'); } catch {}
+    try { localStorage.setItem('tour_drawing_tools_completed', '1'); } catch { }
     setTourActive(false);
   };
   const nextTour = () => {
@@ -133,7 +141,7 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
       manager.setDrawingMode(null);
       setSelectedTool('select');
     };
-    
+
     const listener = manager.addListener('overlaycomplete', onShapeComplete);
     return () => google.maps.event.removeListener(listener);
   }, [map, shapes]);
@@ -181,34 +189,34 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
       setIsBiomeSummaryLoading(false);
     }
   };
-  
+
   const fetchDetailSummary = async (item: Species | Pest, biomeName: string) => {
     let key, endpoint, body;
     const isPest = 'common_name_pest' in item;
 
     if (isPest) {
-        key = `pest::${item.common_name_pest}::${biomeName}`;
-        endpoint = '/api/pest-summary';
-        body = JSON.stringify({ pest_name: item.common_name_pest, biome_name: biomeName });
+      key = `pest::${item.common_name_pest}::${biomeName}`;
+      endpoint = '/api/pest-summary';
+      body = JSON.stringify({ pest_name: item.common_name_pest, biome_name: biomeName });
     } else {
-        key = `species::${item.common_name}::${biomeName}`;
-        endpoint = '/api/flower-summary';
-        body = JSON.stringify({ scientific_name: (item as Species).scientific_name, common_name: item.common_name, biome_name: biomeName });
+      key = `species::${item.common_name}::${biomeName}`;
+      endpoint = '/api/flower-summary';
+      body = JSON.stringify({ scientific_name: (item as Species).scientific_name, common_name: item.common_name, biome_name: biomeName });
     }
 
     if (!key || detailSummaryMap[key]) return;
-    
+
     setIsDetailSummaryLoading(true);
     try {
-        const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body });
-        if (!res.ok) throw new Error(await res.text());
-        const data = await res.json();
-        setDetailSummaryMap((m) => ({ ...m, [key]: data.summary || 'No summary available.' }));
+      const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body });
+      if (!res.ok) throw new Error(await res.text());
+      const data = await res.json();
+      setDetailSummaryMap((m) => ({ ...m, [key]: data.summary || 'No summary available.' }));
     } catch (e: any) {
-        console.error(`Failed to fetch detail summary for ${key}:`, e);
-        setDetailSummaryMap((m) => ({ ...m, [key]: 'Summary could not be loaded.' }));
+      console.error(`Failed to fetch detail summary for ${key}:`, e);
+      setDetailSummaryMap((m) => ({ ...m, [key]: 'Summary could not be loaded.' }));
     } finally {
-        setIsDetailSummaryLoading(false);
+      setIsDetailSummaryLoading(false);
     }
   };
 
@@ -236,7 +244,7 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
       if (bounds) {
         const ne = bounds.getNorthEast();
         const sw = bounds.getSouthWest();
-        shape_points.push([ne.lat(), ne.lng()],[ne.lat(), sw.lng()],[sw.lat(), sw.lng()],[sw.lat(), ne.lng()]);
+        shape_points.push([ne.lat(), ne.lng()], [ne.lat(), sw.lng()], [sw.lat(), sw.lng()], [sw.lat(), ne.lng()]);
       }
     } else if (shape instanceof google.maps.Circle) {
       const center = shape.getCenter();
@@ -260,7 +268,7 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
       if (!res.ok) throw new Error(await res.text());
       const data: AnalysisResult = await res.json();
       setAnalysisResult(data);
-      
+
       if (data.results) {
         fetchBiomeSummaries(data.results);
       }
@@ -271,30 +279,30 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
       setIsLoadingAnalysis(false);
     }
   };
-  
+
   useEffect(() => {
     if (modalOpen) {
-        setActiveDetailKey(null);
+      setActiveDetailKey(null);
     }
   }, [modalOpen]);
 
   useEffect(() => {
     if (!activeDetailKey || !selectedBiome) return;
-    
+
     const [type, name] = activeDetailKey.split('::');
     let item;
 
     if (type === 'species') {
-        item = selectedBiome.species.find(s => s.common_name === name);
+      item = selectedBiome.species.find(s => s.common_name === name);
     } else if (type === 'pest') {
-        item = selectedBiome.pests.find(p => p.common_name_pest === name);
+      item = selectedBiome.pests.find(p => p.common_name_pest === name);
     }
-    
+
     if (item && !detailSummaryMap[activeDetailKey]) {
-        fetchDetailSummary(item, selectedBiome.biome_name);
+      fetchDetailSummary(item, selectedBiome.biome_name);
     }
   }, [activeDetailKey, selectedBiome]);
-  
+
   const btnStyle = (tool: string) => ({ padding: '8px 12px', border: '1px solid #374151', borderRadius: '4px', background: selectedTool === tool ? '#2563eb' : '#1f2937', color: 'white', cursor: 'pointer' });
   const FLOWER_PIN_SRC: string = (typeof FLOWER_PIN === 'string' ? FLOWER_PIN : (FLOWER_PIN as any)?.src ?? '');
   const PUBLIC_FLOWER_PIN_SRC = '/Video/flower%20pin.gif';
@@ -308,21 +316,21 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
             <button data-tour="tool-circle" onClick={() => handleToolSelect('circle')} style={btnStyle('circle')}>Circle</button>
             <button data-tour="tool-polygon" onClick={() => handleToolSelect('polygon')} style={btnStyle('polygon')}>Polygon</button>
           </div>
-          <button data-tour="tool-clear" onClick={deleteSelectedShape} style={{...btnStyle(''), background: '#374151'}}>Clear</button>
-          <button data-tour="tool-theme" onClick={onToggleDarkMode} style={{...btnStyle(''), background: darkMode ? '#d97706' : '#1f2937' }}>{darkMode ? '☀️' : '🌙'}</button>
+          <button data-tour="tool-clear" onClick={deleteSelectedShape} style={{ ...btnStyle(''), background: '#374151' }}>Clear</button>
+          <button data-tour="tool-theme" onClick={onToggleDarkMode} style={{ ...btnStyle(''), background: darkMode ? '#d97706' : '#1f2937' }}>{darkMode ? '☀️' : '🌙'}</button>
           <div data-tour="tools-zoom-group" style={{ display: 'flex', gap: '8px' }}>
-            <button aria-label="Zoom in" onClick={() => handleZoom(1)} style={{...btnStyle(''), background: '#374151'}}>+</button>
-            <button aria-label="Zoom out" onClick={() => handleZoom(-1)} style={{...btnStyle(''), background: '#374151'}}>-</button>
+            <button aria-label="Zoom in" onClick={() => handleZoom(1)} style={{ ...btnStyle(''), background: '#374151' }}>+</button>
+            <button aria-label="Zoom out" onClick={() => handleZoom(-1)} style={{ ...btnStyle(''), background: '#374151' }}>-</button>
           </div>
         </div>
-        
+
         <div style={{ borderTop: '1px solid #374151', paddingTop: '12px', marginTop: '4px' }}>
           <h3 style={{ margin: '0 0 8px 0', fontSize: '14px' }}>🔬 Ecology Analysis</h3>
           <div data-tour="input-time" style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '8px' }}>
-            <label style={{fontSize: '12px'}}>Month:</label>
-            <input type="number" min="1" max="12" value={analysisMonth} onChange={(e) => setAnalysisMonth(parseInt(e.target.value))} style={{ width: '60px', background: '#1f2937', color: 'white', border: '1px solid #374151', borderRadius: '4px', padding: '4px' }}/>
-            <label style={{fontSize: '12px'}}>Year:</label>
-            <input type="number" value={analysisYear} onChange={(e) => setAnalysisYear(parseInt(e.target.value))} style={{ width: '80px', background: '#1f2937', color: 'white', border: '1px solid #374151', borderRadius: '4px', padding: '4px' }}/>
+            <label style={{ fontSize: '12px' }}>Month:</label>
+            <input type="number" min="1" max="12" value={analysisMonth} onChange={(e) => setAnalysisMonth(parseInt(e.target.value))} style={{ width: '60px', background: '#1f2937', color: 'white', border: '1px solid #374151', borderRadius: '4px', padding: '4px' }} />
+            <label style={{ fontSize: '12px' }}>Year:</label>
+            <input type="number" value={analysisYear} onChange={(e) => setAnalysisYear(parseInt(e.target.value))} style={{ width: '80px', background: '#1f2937', color: 'white', border: '1px solid #374151', borderRadius: '4px', padding: '4px' }} />
           </div>
           <button data-tour="run-analysis" onClick={handleAnalysis} disabled={isLoadingAnalysis || shapes.length === 0} style={{ width: '100%', padding: '8px', border: '1px solid #059669', borderRadius: '4px', background: '#10b981', color: 'white', cursor: 'pointer', opacity: (isLoadingAnalysis || shapes.length === 0) ? 0.6 : 1 }}>
             {isLoadingAnalysis ? 'Analyzing...' : 'Run Analysis'}
@@ -330,18 +338,15 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
         </div>
       </div>
 
-      {/* --- CHANGE STARTS HERE --- */}
       {analysisResult?.results.map((result) => {
         const isHovered = hoveredBiomeKey === result.biome;
 
         return (
-          // Use a div to wrap both the marker and the info window.
-          // Apply the mouse enter/leave events to this wrapper.
           <div
             key={result.biome}
             onMouseEnter={() => setHoveredBiomeKey(result.biome)}
             onMouseLeave={() => setHoveredBiomeKey(null)}>
-            
+
             <AdvancedMarker
               position={result.location}
               title={result.biome_name}
@@ -363,18 +368,17 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
               />
             </AdvancedMarker>
 
-            {/* Conditionally render the InfoWindow based on the hover state */}
             {isHovered && (
               <InfoWindow
                 position={result.location}
                 onCloseClick={() => setHoveredBiomeKey(null)}
                 headerDisabled={true}
-                pixelOffset={[0,-45]}
+                pixelOffset={[0, -45]}
                 className="hover-infowindow">
                 <div className="hover-content">
                   <h4>{result.biome_name}</h4>
                   <div className="stats">
-                    <span>Temperature: {result.climate_data.temperature}°C    </span>
+                    <span>Temperature: {result.climate_data.temperature}°C      </span>
                     <span>Precipitation: {result.climate_data.precipitation} mm/d</span>
                   </div>
                   <em>Click pin for full details regarding flowers/pests and blooming....</em>
@@ -384,7 +388,6 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
           </div>
         );
       })}
-      {/* --- CHANGE ENDS HERE --- */}
 
       {modalOpen && selectedBiome && (
         <div className="biome-modal-backdrop" onClick={() => setModalOpen(false)}>
@@ -402,13 +405,18 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
             <div className="biome-section">
               <div className="section-title">Predicted species</div>
               <div className="chips">
-                {selectedBiome.species.slice(0,20).map((s) => {
+                {selectedBiome.species.slice(0, 20).map((s) => {
                   const key = `species::${s.common_name}::${selectedBiome.biome_name}`;
                   const isActive = activeDetailKey === key;
                   return (
                     <span key={key} className={`chip ${isActive ? 'active' : ''}`}
-                          onClick={() => setActiveDetailKey(key)}>
+                      onClick={() => setActiveDetailKey(key)}>
                       {s.common_name} <em className="chip-sub">{s.phenophase}</em>
+                      {/* --- NEW: Display timing prediction --- */}
+                      {s.timing_prediction && (
+                        <em className="chip-timing">({s.timing_prediction})</em>
+                      )}
+                      {/* --- END NEW --- */}
                     </span>
                   );
                 })}
@@ -417,92 +425,54 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
             <div className="biome-section">
               <div className="section-title">Predicted pests</div>
               <div className="chips">
-                {selectedBiome.pests.slice(0,20).map((p) => {
+                {selectedBiome.pests.slice(0, 20).map((p) => {
                   const key = `pest::${p.common_name_pest}::${selectedBiome.biome_name}`;
                   const isActive = activeDetailKey === key;
                   return (
                     <span key={key} className={`chip chip-danger ${isActive ? 'active' : ''}`}
-                          onClick={() => setActiveDetailKey(key)}>
+                      onClick={() => setActiveDetailKey(key)}>
                       {p.common_name_pest}
                     </span>
                   );
                 })}
               </div>
             </div>
-            
+
             <div className="biome-section">
               <div className="section-title">Biome Overview</div>
               {isBiomeSummaryLoading ? (
-                  <div className="summary loading">Loading biome overview…</div>
+                <div className="summary loading">Loading biome overview…</div>
               ) : (
-                  <div className="summary">
-                      {biomeSummaryMap[selectedBiome.biome] || 'An overview for this biome is currently unavailable.'}
-                  </div>
+                <div className="summary">
+                  {biomeSummaryMap[selectedBiome.biome] || 'An overview for this biome is currently unavailable.'}
+                </div>
               )}
             </div>
 
             <div className="biome-section">
               <div className="section-title">Details</div>
               {isDetailSummaryLoading ? (
-                  <div className="summary loading">Fetching details…</div>
+                <div className="summary loading">Fetching details…</div>
               ) : activeDetailKey ? (
-                  <div className="summary">
-                      {detailSummaryMap[activeDetailKey] || 'Summary not available.'}
-                  </div>
+                <div className="summary">
+                  {detailSummaryMap[activeDetailKey] || 'Summary not available.'}
+                </div>
               ) : (
-                  <div className="summary placeholder">
-                    Select a species or pest from the lists above to view details.
-                  </div>
+                <div className="summary placeholder">
+                  Select a species or pest from the lists above to view details.
+                </div>
               )}
             </div>
           </div>
           <style>{`
-            .hover-infowindow .hover-content {
-              background: #0f172a;
-              color: #e5e7eb;
-              padding: 8px 12px;
-              border-radius: 8px;
-              font-family: sans-serif;
-              font-size: 14px;
-              box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-              border: 1px solid rgba(255,255,255,0.1);
-            }
-            .hover-infowindow .hover-content h4 {
-              margin: 0 0 6px 0;
-              font-weight: bold;
-              font-size: 15px;
-            }
-            .hover-infowindow .hover-content .stats {
-              display: flex;
-              gap: 12px;
-              font-size: 12px;
-              color: #9ca3af;
-              margin-bottom: 8px;
-            }
-            .hover-infowindow .hover-content em {
-              font-size: 11px;
-              color: #6b7280;
-              font-style: italic;
-            }
-
-            .gm-style-iw-c {
-              padding: 0 !important;
-              max-width: 400px !important;
-              max-height: 300px !important;
-              border-radius: 8px !important;
-            }
-            .gm-style-iw-d {
-              overflow: hidden !important;
-            }
-            div[role="dialog"] > div:nth-child(2) {
-              background: transparent !important;
-              box-shadow: none !important;
-              pointer-events: none !important;
-            }
-            div[role="dialog"] > div:nth-child(3) {
-                display: none;
-            }
-
+            .hover-infowindow .hover-content { background: #0f172a; color: #e5e7eb; padding: 8px 12px; border-radius: 8px; font-family: sans-serif; font-size: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
+            .hover-infowindow .hover-content h4 { margin: 0 0 6px 0; font-weight: bold; font-size: 15px; }
+            .hover-infowindow .hover-content .stats { display: flex; gap: 12px; font-size: 12px; color: #9ca3af; margin-bottom: 8px; }
+            .hover-infowindow .hover-content em { font-size: 11px; color: #6b7280; font-style: italic; }
+            .gm-style-iw-c { padding: 0 !important; max-width: 400px !important; max-height: 300px !important; border-radius: 8px !important; }
+            .gm-style-iw-d { overflow: hidden !important; }
+            div[role="dialog"] > div:nth-child(2) { background: transparent !important; box-shadow: none !important; pointer-events: none !important; }
+            div[role="dialog"] > div:nth-child(3) { display: none; }
             .biome-modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.55); backdrop-filter: blur(2px); z-index: 4000; display: grid; place-items: center; }
             .biome-modal { width: min(92vw, 760px); max-height: 82vh; overflow: hidden auto; color: #fff; background: linear-gradient(180deg,#0f172a 0%, #111827 100%); border-radius: 16px; box-shadow: 0 18px 42px rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,0.08); }
             .pop-in { animation: biomePop .35s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
@@ -524,6 +494,7 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
             .chip.active { background: rgba(16,185,129,.16); border-color: rgba(16,185,129,.35); }
             .chip-sub { font-style: normal; color: #93c5fd; font-weight: 600; }
             .chip-danger { background: rgba(239,68,68,.12); border-color: rgba(239,68,68,.25); }
+            .chip-timing { font-style: italic; color: #a78bfa; font-weight: 400; font-size: 11px; } /* <-- NEW STYLE */
             .summary { font-size: 13px; color: #e5e7eb; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); padding: 10px 12px; border-radius: 12px; line-height: 1.4; }
             .summary.loading { color: #93c5fd; border-color: rgba(147,197,253,.35); background: rgba(59,130,246,.12); }
             .summary.placeholder { color: #9ca3af; }
