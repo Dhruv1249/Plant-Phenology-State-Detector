@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useMap, AdvancedMarker } from '@vis.gl/react-google-maps';
+import { useMap, AdvancedMarker, InfoWindow } from '@vis.gl/react-google-maps';
 import FLOWER_PIN from './flower pin.gif';
 
 // --- Type Definitions ---
@@ -45,6 +45,9 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
   const [isDetailSummaryLoading, setIsDetailSummaryLoading] = useState<boolean>(false); // Loading state for a specific detail
   
   const [activeDetailKey, setActiveDetailKey] = useState<string | null>(null); // Handles both species and pests
+
+  // --- State for hover info window ---
+  const [hoveredBiomeKey, setHoveredBiomeKey] = useState<string | null>(null);
 
   // --- Guided tour state ---
   const [tourActive, setTourActive] = useState(false);
@@ -190,7 +193,7 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
     } else {
         key = `species::${item.common_name}::${biomeName}`;
         endpoint = '/api/flower-summary';
-        body = JSON.stringify({ scientific_name: item.scientific_name, common_name: item.common_name, biome_name: biomeName });
+        body = JSON.stringify({ scientific_name: (item as Species).scientific_name, common_name: item.common_name, biome_name: biomeName });
     }
 
     if (!key || detailSummaryMap[key]) return;
@@ -327,28 +330,60 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
         </div>
       </div>
 
-      {analysisResult?.results.map((result) => (
-        <React.Fragment key={result.biome}>
-          <AdvancedMarker
-            position={result.location}
-            title={result.biome_name}
-            onClick={() => { setSelectedBiome(result); setModalOpen(true); }}
-          >
-            <img
-              src={FLOWER_PIN_SRC || PUBLIC_FLOWER_PIN_SRC}
-              alt={result.biome_name}
-              draggable={false}
-              style={{ width: 56, height: 56, display: 'block' }}
-              onError={(e) => {
-                const t = e.currentTarget as HTMLImageElement;
-                if (t.src !== PUBLIC_FLOWER_PIN_SRC) {
-                  t.src = PUBLIC_FLOWER_PIN_SRC;
-                }
-              }}
-            />
-          </AdvancedMarker>
-        </React.Fragment>
-      ))}
+      {/* --- CHANGE STARTS HERE --- */}
+      {analysisResult?.results.map((result) => {
+        const isHovered = hoveredBiomeKey === result.biome;
+
+        return (
+          // Use a div to wrap both the marker and the info window.
+          // Apply the mouse enter/leave events to this wrapper.
+          <div
+            key={result.biome}
+            onMouseEnter={() => setHoveredBiomeKey(result.biome)}
+            onMouseLeave={() => setHoveredBiomeKey(null)}>
+            
+            <AdvancedMarker
+              position={result.location}
+              title={result.biome_name}
+              onClick={() => {
+                setSelectedBiome(result);
+                setModalOpen(true);
+              }}>
+              <img
+                src={FLOWER_PIN_SRC || PUBLIC_FLOWER_PIN_SRC}
+                alt={result.biome_name}
+                draggable={false}
+                style={{ width: 56, height: 56, display: 'block', cursor: 'pointer' }}
+                onError={(e) => {
+                  const t = e.currentTarget as HTMLImageElement;
+                  if (t.src !== PUBLIC_FLOWER_PIN_SRC) {
+                    t.src = PUBLIC_FLOWER_PIN_SRC;
+                  }
+                }}
+              />
+            </AdvancedMarker>
+
+            {/* Conditionally render the InfoWindow based on the hover state */}
+            {isHovered && (
+              <InfoWindow
+                position={result.location}
+                onCloseClick={() => setHoveredBiomeKey(null)}
+                headerDisabled={true}
+                className="hover-infowindow">
+                <div className="hover-content">
+                  <h4>{result.biome_name}</h4>
+                  <div className="stats">
+                    <span>Temp: {result.climate_data.temperature}°C</span>
+                    <span>Precip: {result.climate_data.precipitation} mm/d</span>
+                  </div>
+                  <em>Click pin for full details</em>
+                </div>
+              </InfoWindow>
+            )}
+          </div>
+        );
+      })}
+      {/* --- CHANGE ENDS HERE --- */}
 
       {modalOpen && selectedBiome && (
         <div className="biome-modal-backdrop" onClick={() => setModalOpen(false)}>
@@ -421,6 +456,52 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
             </div>
           </div>
           <style>{`
+            .hover-infowindow .hover-content {
+              background: #0f172a;
+              color: #e5e7eb;
+              padding: 8px 12px;
+              border-radius: 8px;
+              font-family: sans-serif;
+              font-size: 14px;
+              box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+              border: 1px solid rgba(255,255,255,0.1);
+            }
+            .hover-infowindow .hover-content h4 {
+              margin: 0 0 6px 0;
+              font-weight: bold;
+              font-size: 15px;
+            }
+            .hover-infowindow .hover-content .stats {
+              display: flex;
+              gap: 12px;
+              font-size: 12px;
+              color: #9ca3af;
+              margin-bottom: 8px;
+            }
+            .hover-infowindow .hover-content em {
+              font-size: 11px;
+              color: #6b7280;
+              font-style: italic;
+            }
+
+            .gm-style-iw-c {
+              padding: 0 !important;
+              max-width: 400px !important;
+              max-height: 300px !important;
+              border-radius: 8px !important;
+            }
+            .gm-style-iw-d {
+              overflow: hidden !important;
+            }
+            div[role="dialog"] > div:nth-child(2) {
+              background: transparent !important;
+              box-shadow: none !important;
+              pointer-events: none !important;
+            }
+            div[role="dialog"] > div:nth-child(3) {
+                display: none;
+            }
+
             .biome-modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.55); backdrop-filter: blur(2px); z-index: 4000; display: grid; place-items: center; }
             .biome-modal { width: min(92vw, 760px); max-height: 82vh; overflow: hidden auto; color: #fff; background: linear-gradient(180deg,#0f172a 0%, #111827 100%); border-radius: 16px; box-shadow: 0 18px 42px rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,0.08); }
             .pop-in { animation: biomePop .35s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
