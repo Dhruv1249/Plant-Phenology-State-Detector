@@ -9,6 +9,21 @@ export const runtime = 'nodejs';
 const CACHE_DIR = path.join(process.cwd(), 'data');
 const CACHE_FILE = path.join(CACHE_DIR, 'flower-summaries.json');
 
+// --- NEW: Type definition for the incoming batch request ---
+interface Species {
+  scientific_name: string;
+  common_name: string;
+}
+interface BiomeData {
+  biome: string; // e.g., "Cfa"
+  biome_name: string;
+  climate_data: { temperature: number; precipitation: number; radiation: number };
+  species: Species[];
+  pests: any[]; // Pest data can be included as context
+}
+type BatchRequestPayload = BiomeData[];
+
+
 // Read cache JSON from disk (create empty if absent)
 async function readCache(): Promise<Record<string, any>> {
   try {
@@ -25,63 +40,95 @@ async function writeCache(obj: Record<string, any>) {
   await fs.writeFile(CACHE_FILE, JSON.stringify(obj, null, 2), 'utf8');
 }
 
-function makeKey(scientific_name?: string, common_name?: string, biome_name?: string) {
+// MODIFIED: Use the biome CODE for a more unique key
+function makeKey(scientific_name?: string, common_name?: string, biome_code?: string) {
   const name = (scientific_name || common_name || 'unknown').trim().toLowerCase();
-  const biome = (biome_name || 'unknown').trim().toLowerCase();
+  const biome = (biome_code || 'unknown').trim().toLowerCase();
   return `${name}::${biome}`;
 }
 
+// ### CORE LOGIC HAS BEEN REWRITTEN FOR BATCHING ###
 export async function POST(req: Request) {
   try {
     const apiKey =
       process.env.GEMINI_API_KEY ||
       process.env.GOOGLE_GEMINI_API_KEY;
 
-    const { scientific_name, common_name, biome_name } = await req.json();
+    const requestData: BatchRequestPayload = await req.json();
+    const cache = await readCache();
+    const finalSummaries: Record<string, string> = {};
 
-    // Use on-disk JSON cache to avoid repeated model calls
-    const key = makeKey(scientific_name, common_name, biome_name);
-    let cache = await readCache();
+    // --- 1. Filter out cached results and prepare data for Gemini ---
+    const biomesToFetch = [];
+    // Map to easily find original data later for caching
+    const keyToDataMap = new Map<string, { species: Species; biome: BiomeData }>();
 
-    if (cache[key]?.summary) {
-      return NextResponse.json({ summary: cache[key].summary, cached: true });
+    for (const biome of requestData) {
+      const speciesToFetch = [];
+      for (const species of biome.species) {
+        const key = makeKey(species.scientific_name, species.common_name, biome.biome);
+        keyToDataMap.set(key, { species, biome });
+
+        if (cache[key]?.summary) {
+          finalSummaries[key] = cache[key].summary;
+        } else {
+          speciesToFetch.push(species);
+        }
+      }
+      // Only add biome to the fetch list if it has species that need summaries
+      if (speciesToFetch.length > 0) {
+        biomesToFetch.push({ ...biome, species: speciesToFetch });
+      }
     }
 
-    // If no Gemini key is provided and cache misses, return a minimal fallback rather than erroring out
+    // If everything was in the cache, return immediately
+    if (biomesToFetch.length === 0) {
+      return NextResponse.json({ summaries: finalSummaries, model: 'cache' });
+    }
+
+    // --- 2. Handle the "No API Key" scenario gracefully ---
     if (!apiKey) {
-      const namePart = scientific_name || common_name || 'This plant';
-      const biomePart = biome_name ? ` within the ${biome_name} biome` : '';
-      const fallback = `${namePart}${biomePart} is commonly documented in this region. It adapts to local conditions and shows seasonal phenology.`.trim();
-      // Persist the fallback to cache as well
-      cache[key] = {
-        summary: fallback,
-        scientific_name,
-        common_name,
-        biome_name,
-        modelUsed: 'fallback/no-key',
-        generatedAt: new Date().toISOString(),
-      };
+      for (const biome of biomesToFetch) {
+        for (const species of biome.species) {
+          const key = makeKey(species.scientific_name, species.common_name, biome.biome);
+          const namePart = species.common_name || species.scientific_name || 'This plant';
+          const fallback = `${namePart} is documented in the ${biome.biome_name} biome, where it adapts to local conditions.`;
+          finalSummaries[key] = fallback;
+          // Persist fallback to cache
+          cache[key] = {
+            summary: fallback,
+            scientific_name: species.scientific_name,
+            common_name: species.common_name,
+            biome_name: biome.biome_name,
+            modelUsed: 'fallback/no-key',
+            generatedAt: new Date().toISOString(),
+          };
+        }
+      }
       await writeCache(cache);
-      return NextResponse.json({ summary: fallback, cached: false, model: 'fallback/no-key' });
+      return NextResponse.json({ summaries: finalSummaries, model: 'fallback/no-key' });
     }
 
-    const namePart = scientific_name || common_name || 'the plant';
-    const biomePart = biome_name ? ` in the biome "${biome_name}"` : '';
-    const prompt = [
-      `Write a concise, factual 3–4 sentence summary about ${namePart}${biomePart}.`,
-      `Include: where it commonly grows, notable features, typical phenology (e.g., flowering season), and any common uses or ecological roles if well-known.`,
-      `Keep it compact and readable. Avoid speculation, citations, or markdown.`,
-    ].join(' ');
+    // --- 3. Construct the batch prompt for Gemini ---
+    const prompt = `
+You are an expert botanist and ecologist. Your task is to generate concise, factual summaries for a list of plant species based on their environmental context.
+
+I will provide a JSON array of biome data. For each species in each biome, write a 3-4 sentence summary tailored to its specific environment (biome name, temperature, precipitation, etc.). Include its common features, typical phenology (like flowering season), and ecological role in that context.
+
+You MUST return your response as a single, valid JSON object. Do not include any text or markdown formatting before or after the JSON. The JSON object should be a map where each key is a string in the format 'SCIENTIFIC_NAME::BIOME_CODE' and the value is the generated summary string.
+
+
+Here is the data for the summaries you need to generate:
+${JSON.stringify(biomesToFetch, null, 2)}
+`.trim();
 
     const buildBody = () => ({ contents: [{ parts: [{ text: prompt }] }] });
-
-    // Prefer Gemini 2.5 Flash, then fall back to known stable models
-    const models = [
-      'gemini-2.5-flash-lite',
-      'gemini-2.5-flash',
-    ];
-
+    const models = ['gemini-2.5-flash-lite'];
     let lastError: string | null = null;
+    let modelUsed: string | null = null;
+    let newSummaries: Record<string, string> | null = null;
+    console.log('PROMPT SENT TO GEMINI:', prompt);
+    // --- 4. Call the Gemini API ---
     for (const model of models) {
       try {
         const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`;
@@ -94,43 +141,72 @@ export async function POST(req: Request) {
         const maybeJson = await safeJson(resp);
         if (!resp.ok) {
           lastError = formatError(maybeJson) || (await resp.text());
-          continue; // try next model
+          continue; // Try next model
         }
 
         const text = maybeJson?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-        const summary = (text || '').trim();
-        if (summary) {
-          // Save to cache
-          cache[key] = {
-            summary,
-            scientific_name,
-            common_name,
-            biome_name,
-            modelUsed: model,
-            generatedAt: new Date().toISOString(),
-          };
-          await writeCache(cache);
-          return NextResponse.json({ summary, cached: false, model });
+        // The response might be wrapped in markdown, so we clean it
+        const cleanedText = text.replace(/^```json\s*|```\s*$/g, '').trim();
+
+        if (cleanedText) {
+          try {
+            newSummaries = JSON.parse(cleanedText);
+            modelUsed = model;
+            break; // Success! Exit the loop.
+          } catch (e) {
+            lastError = `Failed to parse JSON response from model: ${e instanceof Error ? e.message : String(e)}. Response text: "${cleanedText}"`;
+            continue; // Malformed JSON, try next model
+          }
+        } else {
+          lastError = 'Empty response from Gemini';
         }
-        lastError = 'Empty response from Gemini';
       } catch (err: any) {
         lastError = err?.message || String(err);
-        continue;
       }
     }
 
-    // If we reach here, model calls failed; attempt a graceful fallback and persist
-    const synthesized = localFallback(namePart, biome_name);
-    cache[key] = {
-      summary: synthesized,
-      scientific_name,
-      common_name,
-      biome_name,
-      modelUsed: 'fallback/generator-failed',
-      generatedAt: new Date().toISOString(),
-    };
+    // --- 5. Process the response, cache it, and return ---
+    if (newSummaries && modelUsed) {
+      Object.assign(finalSummaries, newSummaries);
+      // Update cache with new summaries
+      for (const key in newSummaries) {
+        const data = keyToDataMap.get(key);
+        if (data) {
+          cache[key] = {
+            summary: newSummaries[key],
+            scientific_name: data.species.scientific_name,
+            common_name: data.species.common_name,
+            biome_name: data.biome.biome_name,
+            modelUsed: modelUsed,
+            generatedAt: new Date().toISOString(),
+          };
+        }
+      }
+      await writeCache(cache);
+      return NextResponse.json({ summaries: finalSummaries, model: modelUsed });
+    }
+
+    // --- 6. Handle failure of all Gemini calls ---
+    // If we reach here, all model calls failed. Generate local fallbacks.
+    for (const biome of biomesToFetch) {
+        for (const species of biome.species) {
+            const key = makeKey(species.scientific_name, species.common_name, biome.biome);
+            const namePart = species.common_name || species.scientific_name || 'This plant';
+            const fallback = `${namePart} is a species found in the ${biome.biome_name} biome. Its specific characteristics depend on local climate and soil conditions.`;
+            finalSummaries[key] = fallback;
+            cache[key] = {
+                summary: fallback,
+                scientific_name: species.scientific_name,
+                common_name: species.common_name,
+                biome_name: biome.biome_name,
+                modelUsed: 'fallback/generator-failed',
+                generatedAt: new Date().toISOString(),
+            };
+        }
+    }
     await writeCache(cache);
-    return NextResponse.json({ summary: synthesized, cached: false, model: 'fallback/generator-failed', error: lastError || undefined });
+    return NextResponse.json({ summaries: finalSummaries, model: 'fallback/generator-failed', error: lastError });
+
   } catch (e: any) {
     return NextResponse.json({ error: e?.message || 'Unknown server error' }, { status: 500 });
   }
@@ -145,10 +221,4 @@ function formatError(j: any) {
     const m = j?.error?.message || j?.candidates?.[0]?.finishReason || j?.status || '';
     return typeof m === 'string' ? m : JSON.stringify(j);
   } catch { return null; }
-}
-
-function localFallback(namePart: string, biome_name?: string) {
-  const title = namePart || 'This plant';
-  const biomeText = biome_name ? ` within the ${biome_name} biome` : '';
-  return `${title}${biomeText} is commonly documented in this region. It adapts to local climate and soils, with seasonal phenology. Notable features and ecological roles vary by variety and habitat.`.trim();
 }
