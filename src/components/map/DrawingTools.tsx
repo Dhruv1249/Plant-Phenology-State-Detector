@@ -1,9 +1,6 @@
 'use client';
 
-// Make sure you have the Google Maps types installed for a better developer experience
-// npm install --save-dev @types/google.maps
-
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMap, AdvancedMarker, InfoWindow } from '@vis.gl/react-google-maps';
 import FLOWER_PIN from './flower pin.gif';
 
@@ -40,31 +37,25 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedBiome, setSelectedBiome] = useState<BiomeResult | null>(null);
   
-  const [biomeSummaryMap, setBiomeSummaryMap] = useState<Record<string, string>>({});
-  const [isBiomeSummaryLoading, setIsBiomeSummaryLoading] = useState<boolean>(false);
+  // --- State management for TWO types of summaries ---
+  const [biomeSummaryMap, setBiomeSummaryMap] = useState<Record<string, string>>({}); // For overall biome overviews
+  const [isBiomeSummaryLoading, setIsBiomeSummaryLoading] = useState<boolean>(false); // Loading state for overviews
   
-  const [detailSummaryMap, setDetailSummaryMap] = useState<Record<string, string>>({});
-  const [isDetailSummaryLoading, setIsDetailSummaryLoading] = useState<boolean>(false);
+  const [detailSummaryMap, setDetailSummaryMap] = useState<Record<string, string>>({}); // Handles both species and pests
+  const [isDetailSummaryLoading, setIsDetailSummaryLoading] = useState<boolean>(false); // Loading state for a specific detail
   
-  const [activeDetailKey, setActiveDetailKey] = useState<string | null>(null);
+  const [activeDetailKey, setActiveDetailKey] = useState<string | null>(null); // Handles both species and pests
 
+  // --- State for hover info window ---
   const [hoveredBiomeKey, setHoveredBiomeKey] = useState<string | null>(null);
 
+  // --- Guided tour state ---
   const [tourActive, setTourActive] = useState(false);
   const [tourSteps, setTourSteps] = useState<{ el: HTMLElement; title: string; content: string }[]>([]);
   const [tourIndex, setTourIndex] = useState(0);
   const [tourRect, setTourRect] = useState<{ top: number; left: number; width: number; height: number } | null>(null);
 
-  // --- FIX #1: Safely create the pixelOffset object (type-safe) ---
-  // We use useMemo to create this object only once, and only when `window.google` is available.
-  const infoWindowOffset = useMemo<google.maps.Size | undefined>(() => {
-    if (typeof window !== 'undefined' && (window as any).google && (window as any).google.maps) {
-      // cast to google.maps.Size for TypeScript compatibility
-      return new (window as any).google.maps.Size(0, -45) as google.maps.Size;
-    }
-    return undefined;
-  }, []);
-
+  // Initialize tour steps after mount
   useEffect(() => {
     try {
       const seen = localStorage.getItem('tour_drawing_tools_completed') === '1';
@@ -92,6 +83,7 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
     setTourActive(available.length > 0);
   }, []);
 
+  // Keep tour spotlight aligned
   useEffect(() => {
     if (!tourActive || !tourSteps[tourIndex]?.el) {
       setTourRect(null);
@@ -338,12 +330,13 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
         </div>
       </div>
 
+      {/* --- CHANGE STARTS HERE --- */}
       {analysisResult?.results.map((result) => {
         const isHovered = hoveredBiomeKey === result.biome;
-        // --- FEATURE: Get the top species from the results ---
-        const topSpecies = result.species?.[0];
 
         return (
+          // Use a div to wrap both the marker and the info window.
+          // Apply the mouse enter/leave events to this wrapper.
           <div
             key={result.biome}
             onMouseEnter={() => setHoveredBiomeKey(result.biome)}
@@ -370,35 +363,28 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
               />
             </AdvancedMarker>
 
+            {/* Conditionally render the InfoWindow based on the hover state */}
             {isHovered && (
               <InfoWindow
                 position={result.location}
-                pixelOffset={[0,-45]}
                 onCloseClick={() => setHoveredBiomeKey(null)}
                 headerDisabled={true}
+                pixelOffset={[0,-45]}
                 className="hover-infowindow">
                 <div className="hover-content">
                   <h4>{result.biome_name}</h4>
                   <div className="stats">
-                    <span>Temp: {result.climate_data.temperature}°C </span>
-                    <span>Precip: {result.climate_data.precipitation} mm/d</span>
+                    <span>Temperature: {result.climate_data.temperature}°C    </span>
+                    <span>Precipitation: {result.climate_data.precipitation} mm/d</span>
                   </div>
-                  
-                  {/* --- FEATURE: Display the top species if it exists --- */}
-                  {topSpecies && (
-                    <div className="top-species">
-                      <span className="top-species-name">🌸 {topSpecies.common_name}: </span>
-                      <span className="top-species-phase">{topSpecies.phenophase}</span>
-                    </div>
-                  )}
-
-                  <em className="click-prompt">Click pin for full details</em>
+                  <em>Click pin for full details regarding flowers/pests and blooming....</em>
                 </div>
               </InfoWindow>
             )}
           </div>
         );
       })}
+      {/* --- CHANGE ENDS HERE --- */}
 
       {modalOpen && selectedBiome && (
         <div className="biome-modal-backdrop" onClick={() => setModalOpen(false)}>
@@ -470,82 +456,79 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
               )}
             </div>
           </div>
-          {/* --- FIX #2: More forceful CSS for a true dark theme --- */}
           <style>{`
-            .hover-content {
+            .hover-infowindow .hover-content {
               background: #0f172a;
               color: #e5e7eb;
-              padding: 12px;
+              padding: 8px 12px;
               border-radius: 8px;
               font-family: sans-serif;
               font-size: 14px;
-              box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-              border: 1px solid rgba(255,255,255,0.15);
-              min-width: 220px;
+              box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+              border: 1px solid rgba(255,255,255,0.1);
             }
-            .hover-content h4 {
-              margin: 0 0 8px 0;
+            .hover-infowindow .hover-content h4 {
+              margin: 0 0 6px 0;
               font-weight: bold;
-              font-size: 16px;
-              color: #f0f9ff;
+              font-size: 15px;
             }
-            .hover-content .stats {
+            .hover-infowindow .hover-content .stats {
               display: flex;
-              align-items: center;
-              gap: 8px;
-              font-size: 13px;
-              color: #9ca3af;
-              margin-bottom: 10px;
-              padding-bottom: 10px;
-              border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-            .hover-content .stats span:not(:first-child)::before {
-              content: '•';
-              color: #4b5563;
-              margin-right: 8px;
-            }
-            /* --- FEATURE: Styles for the new top species section --- */
-            .hover-content .top-species {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              font-size: 13px;
-              margin-bottom: 10px;
-            }
-            .hover-content .top-species-name {
-              color: #e5e7eb;
-              font-weight: 500;
-            }
-            .hover-content .top-species-phase {
-              background-color: rgba(59, 130, 246, 0.15);
-              color: #93c5fd;
-              padding: 3px 8px;
-              border-radius: 99px;
-              font-size: 11px;
-              font-weight: 600;
-            }
-            .hover-content .click-prompt {
+              gap: 12px;
               font-size: 12px;
+              color: #9ca3af;
+              margin-bottom: 8px;
+            }
+            .hover-infowindow .hover-content em {
+              font-size: 11px;
               color: #6b7280;
               font-style: italic;
             }
 
-            /* --- Stronger dark mode override for Google InfoWindow --- */
-            .gm-style .gm-style-iw-c,
-            .gm-style .gm-style-iw-tc::after {
-              background: transparent !important;
-              box-shadow: none !important;
-              border: none !important;
+            .gm-style-iw-c {
+              padding: 0 !important;
+              max-width: 400px !important;
+              max-height: 300px !important;
+              border-radius: 8px !important;
             }
-            .gm-style .gm-style-iw-d {
+            .gm-style-iw-d {
               overflow: hidden !important;
             }
-            .gm-style-iw-tc::after {
-              display: none !important; /* Hides the little arrow pointing down */
+            div[role="dialog"] > div:nth-child(2) {
+              background: transparent !important;
+              box-shadow: none !important;
+              pointer-events: none !important;
             }
-            div[role="dialog"] > button {
-              display: none !important; /* Hides the default close button */
+            div[role="dialog"] > div:nth-child(3) {
+                display: none;
             }
+
+            .biome-modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.55); backdrop-filter: blur(2px); z-index: 4000; display: grid; place-items: center; }
+            .biome-modal { width: min(92vw, 760px); max-height: 82vh; overflow: hidden auto; color: #fff; background: linear-gradient(180deg,#0f172a 0%, #111827 100%); border-radius: 16px; box-shadow: 0 18px 42px rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,0.08); }
+            .pop-in { animation: biomePop .35s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+            @keyframes biomePop { from { opacity: 0; transform: translateY(12px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+            .biome-header { position: sticky; top: 0; z-index: 1; padding: 16px; background: radial-gradient(80% 120% at 0% 0%, rgba(16,185,129,0.25) 0%, rgba(0,0,0,0) 60%), radial-gradient(80% 120% at 100% 0%, rgba(59,130,246,0.25) 0%, rgba(0,0,0,0) 60%), #0f172a; border-bottom: 1px solid rgba(255,255,255,0.08); }
+            .biome-title { font-weight: 800; font-size: 18px; letter-spacing: .2px; }
+            .biome-code { font-weight: 600; color: rgba(255,255,255,.85); }
+            .biome-sub { font-size: 12px; color: rgba(255,255,255,.7); margin-top: 2px; }
+            .biome-close { position: absolute; right: 12px; top: 12px; width: 32px; height: 32px; border-radius: 8px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.06); color: #fff; font-size: 20px; line-height: 28px; text-align: center; cursor: pointer; }
+            .biome-close:hover { background: rgba(255,255,255,.12); }
+            .biome-metrics { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; padding: 14px 16px; }
+            .metric { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 10px; text-align: center; }
+            .metric-label { font-size: 11px; color: rgba(255,255,255,.75); }
+            .metric-value { font-size: 14px; font-weight: 800; margin-top: 2px; }
+            .biome-section { padding: 8px 16px 14px; }
+            .section-title { font-size: 12px; color: rgba(255,255,255,.7); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .06em; }
+            .chips { display: flex; flex-wrap: wrap; gap: 8px; max-height: 180px; overflow: auto; }
+            .chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #e5e7eb; background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.25); padding: 6px 10px; border-radius: 999px; cursor: pointer; }
+            .chip.active { background: rgba(16,185,129,.16); border-color: rgba(16,185,129,.35); }
+            .chip-sub { font-style: normal; color: #93c5fd; font-weight: 600; }
+            .chip-danger { background: rgba(239,68,68,.12); border-color: rgba(239,68,68,.25); }
+            .summary { font-size: 13px; color: #e5e7eb; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); padding: 10px 12px; border-radius: 12px; line-height: 1.4; }
+            .summary.loading { color: #93c5fd; border-color: rgba(147,197,253,.35); background: rgba(59,130,246,.12); }
+            .summary.placeholder { color: #9ca3af; }
+            .biome-foot { padding: 12px 16px 16px; display: flex; gap: 8px; flex-wrap: wrap; }
+            .foot-pill { font-size: 11px; color: rgba(255,255,255,.85); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); padding: 4px 8px; border-radius: 999px; }
           `}</style>
         </div>
       )}
