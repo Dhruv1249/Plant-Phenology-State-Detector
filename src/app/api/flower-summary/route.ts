@@ -110,13 +110,15 @@ export async function POST(req: Request) {
     }
 
     // --- 3. Construct the batch prompt for Gemini ---
-    const prompt = `
-You are an expert botanist and ecologist. Your task is to generate concise, factual summaries for a list of plant species based on their environmental context.
+    // --- 3. Construct the batch prompt for Gemini ---
+  const prompt = `
+You are a scientific writer for a botanical field guide. Your task is to generate extremely concise, data-rich summaries for the provided biomes, plant, pest species and rest of the factors . Brevity and factual accuracy are the highest priorities.
 
-I will provide a JSON array of biome data. For each species in each biome, write a 3-4 sentence summary tailored to its specific environment (biome name, temperature, precipitation, etc.). Include its common features, typical phenology (like flowering season), and ecological role in that context.
-
-You MUST return your response as a single, valid JSON object. Do not include any text or markdown formatting before or after the JSON. The JSON object should be a map where each key is a string in the format 'SCIENTIFIC_NAME::BIOME_CODE' and the value is the generated summary string.
-
+Follow these rules strictly:
+1.  **Length Constraint:** Each summary MUST be 3-6 sentences long.
+2.  **Content Requirement:** Each summary MUST be tailored to the provided environmental context (biome name, climate data). Concisely describe overall biomes what plants and pests are there and about and about rest of the things. Always keep a bit of  variation in sentences for each biomes no two sentences should sound same.
+3.  **Tone:** The writing style must be dense, factual, and encyclopedic. Do not use conversational language or speculative information. Never use scientific names.
+4.  **Output Format:** Your entire response MUST be a single, valid JSON object. Do not include any explanatory text, markdown, or any characters outside of the final JSON structure. The JSON object must be a map where each key is 'SCIENTIFIC_NAME::BIOME_CODE' and the value is the summary string.
 
 Here is the data for the summaries you need to generate:
 ${JSON.stringify(biomesToFetch, null, 2)}
