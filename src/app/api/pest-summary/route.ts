@@ -4,9 +4,8 @@ import path from 'path';
 
 export const runtime = 'nodejs';
 
-// --- This cache is ONLY for specific flower summaries ---
 const CACHE_DIR = path.join(process.cwd(), 'data');
-const CACHE_FILE = path.join(CACHE_DIR, 'flower-summaries.json');
+const CACHE_FILE = path.join(CACHE_DIR, 'pest-summaries.json');
 
 async function readCache(): Promise<Record<string, any>> {
     try {
@@ -23,8 +22,8 @@ async function writeCache(obj: Record<string, any>) {
     await fs.writeFile(CACHE_FILE, JSON.stringify(obj, null, 2), 'utf8');
 }
 
-function makeKey(scientific_name?: string, common_name?: string, biome_name?: string) {
-    const name = (scientific_name || common_name || 'unknown').trim().toLowerCase();
+function makeKey(pest_name?: string, biome_name?: string) {
+    const name = (pest_name || 'unknown').trim().toLowerCase();
     const biome = (biome_name || 'unknown').trim().toLowerCase();
     return `${name}::${biome}`;
 }
@@ -32,9 +31,13 @@ function makeKey(scientific_name?: string, common_name?: string, biome_name?: st
 export async function POST(req: Request) {
     try {
         const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_GEMINI_API_KEY;
-        const { scientific_name, common_name, biome_name } = await req.json();
+        const { pest_name, biome_name } = await req.json();
 
-        const key = makeKey(scientific_name, common_name, biome_name);
+        if (!pest_name || !biome_name) {
+            return NextResponse.json({ error: 'Missing pest_name or biome_name' }, { status: 400 });
+        }
+
+        const key = makeKey(pest_name, biome_name);
         let cache = await readCache();
 
         if (cache[key]?.summary) {
@@ -42,25 +45,21 @@ export async function POST(req: Request) {
         }
 
         if (!apiKey) {
-            const namePart = scientific_name || common_name || 'This plant';
-            const fallback = `${namePart} is well-adapted to the conditions of the ${biome_name} biome.`;
+            const fallback = `${pest_name} is a known pest in the ${biome_name} biome. Control methods should be considered based on local guidelines.`;
             cache[key] = { summary: fallback, modelUsed: 'fallback/no-key' };
             await writeCache(cache);
             return NextResponse.json({ summary: fallback });
         }
 
         const prompt = `
-You are a scientific writer for a botanical field guide. Your task is to generate an extremely concise, data-rich summary for the provided plant species. Brevity and factual accuracy are the highest priorities.
+You are an entomologist providing a concise summary of an agricultural or ecological pest.
 
-Follow these rules with absolute precision:
-1.  **Complete Iteration:** For the single biome provided, generate a summary for the single species provided.
-2.  **Complete JSON Output:** Your entire response MUST be a single, valid JSON object with a single key "summary" and the value as the summary string.
-3.  **Summary Content:** For each summary, concisely describe the plant's general appearance, its seasonal cycle (like flowering time) in its specific biome, and its primary ecological role.
-4.  **Summary Style:** Each summary must be 2-3 sentences and 40-60 words. The tone must be dense, factual, and encyclopedic.
+Follow these rules:
+1.  **Content:** Describe the pest named "${pest_name}". Explain its impact on the local ecosystem or agriculture within the "${biome_name}" biome. Mention its typical life cycle or period of activity.
+2.  **Style:** Keep the summary to 2-4 sentences. The tone should be factual and informative.
+3.  **Output:** Respond ONLY with a single, valid JSON object formatted like this: { "summary": "Your generated text here." }
 
-Here is the data you MUST process in its entirety:
-${JSON.stringify({ scientific_name, common_name, biome_name }, null, 2)}
-`.trim();
+Do not include markdown, comments, or any other text outside the JSON object.`.trim();
 
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`;
         const resp = await fetch(url, {
@@ -70,18 +69,29 @@ ${JSON.stringify({ scientific_name, common_name, biome_name }, null, 2)}
         });
 
         if (!resp.ok) {
-            throw new Error(await resp.text());
+            throw new Error(`API Error: ${await resp.text()}`);
         }
         
         const maybeJson = await resp.json();
         const text = maybeJson?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-        const cleanedText = text.replace(/^```json\s*|```\s*$/g, '').trim();
-        const newSummary = JSON.parse(cleanedText).summary;
+        
+        let newSummary;
+        try {
+            const cleanedText = text.replace(/^```json\s*|```\s*$/g, '').trim();
+            const parsed = JSON.parse(cleanedText);
+            if (typeof parsed.summary !== 'string') {
+                throw new Error("AI response JSON is missing the 'summary' string key.");
+            }
+            newSummary = parsed.summary;
+        } catch(e) {
+            console.error("Failed to parse AI response for pest summary:", text);
+            throw new Error("AI returned a malformed response.");
+        }
+
 
         cache[key] = {
             summary: newSummary,
-            scientific_name,
-            common_name,
+            pest_name,
             biome_name,
             modelUsed: 'gemini-2.5-flash-lite',
             generatedAt: new Date().toISOString(),
@@ -91,6 +101,7 @@ ${JSON.stringify({ scientific_name, common_name, biome_name }, null, 2)}
         return NextResponse.json({ summary: newSummary });
 
     } catch (e: any) {
+        console.error("Pest summary error:", e.message);
         return NextResponse.json({ error: e?.message || 'Unknown server error' }, { status: 500 });
     }
 }

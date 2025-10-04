@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useMap, AdvancedMarker } from '@vis.gl/react-google-maps';
 import FLOWER_PIN from './flower pin.gif';
 
-// --- Type Definitions (Unchanged) ---
+// --- Type Definitions ---
 interface DrawingToolsProps {
   darkMode: boolean;
   onToggleDarkMode: () => void;
@@ -37,28 +37,79 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedBiome, setSelectedBiome] = useState<BiomeResult | null>(null);
   
-  // States for batch summary loading
-  const [summaryMap, setSummaryMap] = useState<Record<string, string>>({});
-  const [isBatchLoading, setIsBatchLoading] = useState<boolean>(false);
-  const [activeSpeciesKey, setActiveSpeciesKey] = useState<string | null>(null);
+  // --- State management for TWO types of summaries ---
+  const [biomeSummaryMap, setBiomeSummaryMap] = useState<Record<string, string>>({}); // For overall biome overviews
+  const [isBiomeSummaryLoading, setIsBiomeSummaryLoading] = useState<boolean>(false); // Loading state for overviews
+  
+  const [detailSummaryMap, setDetailSummaryMap] = useState<Record<string, string>>({}); // Handles both species and pests
+  const [isDetailSummaryLoading, setIsDetailSummaryLoading] = useState<boolean>(false); // Loading state for a specific detail
+  
+  const [activeDetailKey, setActiveDetailKey] = useState<string | null>(null); // Handles both species and pests
 
-  // Guided tour state (Unchanged)
+  // --- Guided tour state ---
   const [tourActive, setTourActive] = useState(false);
   const [tourSteps, setTourSteps] = useState<{ el: HTMLElement; title: string; content: string }[]>([]);
   const [tourIndex, setTourIndex] = useState(0);
   const [tourRect, setTourRect] = useState<{ top: number; left: number; width: number; height: number } | null>(null);
 
-  // All tour useEffects and functions (finishTour, nextTour, skipTour) remain unchanged...
+  // Initialize tour steps after mount
   useEffect(() => {
-    // ... Tour initialization logic is unchanged
-  }, []);
-  useEffect(() => {
-    // ... Tour spotlight logic is unchanged
-  }, [tourActive, tourSteps, tourIndex]);
-  const finishTour = () => {  try { localStorage.setItem('tour_drawing_tools_completed', '1'); } catch {} setTourActive(false); };
-  const nextTour = () => { if (tourIndex < tourSteps.length - 1) setTourIndex((i) => i + 1); else finishTour(); };
-  const skipTour = () => finishTour();
+    try {
+      const seen = localStorage.getItem('tour_drawing_tools_completed') === '1';
+      if (seen) {
+        setTourActive(false);
+        return;
+      }
+    } catch {}
 
+    const defs = [
+      { selector: '[data-tour="tools-shapes-group"]', title: 'Draw tools', content: 'Use Rectangle, Circle, or Polygon to draw an area for analysis.' },
+      { selector: '[data-tour="tool-clear"]', title: 'Clear', content: 'Remove the drawn shape and reset the analysis.' },
+      { selector: '[data-tour="tool-theme"]', title: 'Theme', content: 'Toggle between dark and light map themes.' },
+      { selector: '[data-tour="tools-zoom-group"]', title: 'Zoom', content: 'Use + and − to zoom the map.' },
+      { selector: '[data-tour="input-time"]', title: 'Time', content: 'Select the month and year for the ecology analysis.' },
+      { selector: '[data-tour="run-analysis"]', title: 'Run Analysis', content: 'Run the ecology analysis for the selected shape and time.' },
+    ];
+    const available = defs
+      .map((d) => ({ ...d, el: document.querySelector(d.selector) as HTMLElement | null }))
+      .filter((d): d is { selector: string; title: string; content: string; el: HTMLElement } => !!d.el)
+      .map(({ el, title, content }) => ({ el, title, content }));
+
+    setTourSteps(available);
+    setTourIndex(0);
+    setTourActive(available.length > 0);
+  }, []);
+
+  // Keep tour spotlight aligned
+  useEffect(() => {
+    if (!tourActive || !tourSteps[tourIndex]?.el) {
+      setTourRect(null);
+      return;
+    }
+    const el = tourSteps[tourIndex].el;
+    const update = () => {
+      const r = el.getBoundingClientRect();
+      setTourRect({ top: r.top + window.scrollY, left: r.left + window.scrollX, width: r.width, height: r.height });
+    };
+    update();
+    window.addEventListener('resize', update);
+    window.addEventListener('scroll', update, { passive: true } as AddEventListenerOptions);
+    el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    return () => {
+      window.removeEventListener('resize', update);
+      window.removeEventListener('scroll', update);
+    };
+  }, [tourActive, tourSteps, tourIndex]);
+
+  const finishTour = () => {
+    try { localStorage.setItem('tour_drawing_tools_completed', '1'); } catch {}
+    setTourActive(false);
+  };
+  const nextTour = () => {
+    if (tourIndex < tourSteps.length - 1) setTourIndex((i) => i + 1);
+    else finishTour();
+  };
+  const skipTour = () => finishTour();
 
   useEffect(() => {
     if (!map) return;
@@ -108,24 +159,53 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
     map.setZoom(next);
   };
 
-  // Function to fetch all summaries in a single batch
-  const fetchAllSummaries = async (results: BiomeResult[]) => {
+  const fetchBiomeSummaries = async (results: BiomeResult[]) => {
     if (!results || results.length === 0) return;
-    setIsBatchLoading(true);
+    setIsBiomeSummaryLoading(true);
     try {
-      const res = await fetch('/api/flower-summary', {
+      const res = await fetch('/api/biome-summary', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(results) // Send the entire results array
+        body: JSON.stringify(results)
       });
+      if (!res.ok) throw new Error(await res.text());
       const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || 'Failed to get summaries');
-      setSummaryMap(data.summaries || {});
+      setBiomeSummaryMap(data.summaries || {});
     } catch (e) {
-      console.error("Failed to fetch batch summaries:", e);
-      // Optionally, you could set an error state here
+      console.error("Failed to fetch biome summaries:", e);
+      alert("Could not load biome overviews. The AI service may be unavailable.");
     } finally {
-      setIsBatchLoading(false);
+      setIsBiomeSummaryLoading(false);
+    }
+  };
+  
+  const fetchDetailSummary = async (item: Species | Pest, biomeName: string) => {
+    let key, endpoint, body;
+    const isPest = 'common_name_pest' in item;
+
+    if (isPest) {
+        key = `pest::${item.common_name_pest}::${biomeName}`;
+        endpoint = '/api/pest-summary';
+        body = JSON.stringify({ pest_name: item.common_name_pest, biome_name: biomeName });
+    } else {
+        key = `species::${item.common_name}::${biomeName}`;
+        endpoint = '/api/flower-summary';
+        body = JSON.stringify({ scientific_name: item.scientific_name, common_name: item.common_name, biome_name: biomeName });
+    }
+
+    if (!key || detailSummaryMap[key]) return;
+    
+    setIsDetailSummaryLoading(true);
+    try {
+        const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body });
+        if (!res.ok) throw new Error(await res.text());
+        const data = await res.json();
+        setDetailSummaryMap((m) => ({ ...m, [key]: data.summary || 'No summary available.' }));
+    } catch (e: any) {
+        console.error(`Failed to fetch detail summary for ${key}:`, e);
+        setDetailSummaryMap((m) => ({ ...m, [key]: 'Summary could not be loaded.' }));
+    } finally {
+        setIsDetailSummaryLoading(false);
     }
   };
 
@@ -136,12 +216,12 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
     }
     setIsLoadingAnalysis(true);
     setAnalysisResult(null);
-    setSummaryMap({}); // Clear old summaries
+    setBiomeSummaryMap({});
+    setDetailSummaryMap({});
 
     const shape = shapes[0];
     let shape_points: [number, number][] = [];
 
-    // Logic to get shape_points... (Unchanged)
     if (shape instanceof google.maps.Polygon) {
       const path = shape.getPath();
       for (let i = 0; i < path.getLength(); i++) {
@@ -178,9 +258,8 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
       const data: AnalysisResult = await res.json();
       setAnalysisResult(data);
       
-      // Trigger the batch summary fetch right after getting analysis results
       if (data.results) {
-        fetchAllSummaries(data.results);
+        fetchBiomeSummaries(data.results);
       }
 
     } catch (error) {
@@ -189,24 +268,33 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
       setIsLoadingAnalysis(false);
     }
   };
+  
+  useEffect(() => {
+    if (modalOpen) {
+        setActiveDetailKey(null);
+    }
+  }, [modalOpen]);
 
+  useEffect(() => {
+    if (!activeDetailKey || !selectedBiome) return;
+    
+    const [type, name] = activeDetailKey.split('::');
+    let item;
+
+    if (type === 'species') {
+        item = selectedBiome.species.find(s => s.common_name === name);
+    } else if (type === 'pest') {
+        item = selectedBiome.pests.find(p => p.common_name_pest === name);
+    }
+    
+    if (item && !detailSummaryMap[activeDetailKey]) {
+        fetchDetailSummary(item, selectedBiome.biome_name);
+    }
+  }, [activeDetailKey, selectedBiome]);
+  
   const btnStyle = (tool: string) => ({ padding: '8px 12px', border: '1px solid #374151', borderRadius: '4px', background: selectedTool === tool ? '#2563eb' : '#1f2937', color: 'white', cursor: 'pointer' });
   const FLOWER_PIN_SRC: string = (typeof FLOWER_PIN === 'string' ? FLOWER_PIN : (FLOWER_PIN as any)?.src ?? '');
   const PUBLIC_FLOWER_PIN_SRC = '/Video/flower%20pin.gif';
-
-
-  // When modal opens, auto-select the first species
-  React.useEffect(() => {
-    if (!modalOpen || !selectedBiome) return;
-    const first = selectedBiome.species[0];
-    if (!first) {
-      setActiveSpeciesKey(null); // No species to select
-      return;
-    };
-    const key = `${first.scientific_name || first.common_name}::${selectedBiome.biome}`;
-    setActiveSpeciesKey(key);
-  }, [modalOpen, selectedBiome]);
-
 
   return (
     <>
@@ -239,7 +327,6 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
         </div>
       </div>
 
-      {/* Marker rendering loop is unchanged... */}
       {analysisResult?.results.map((result) => (
         <React.Fragment key={result.biome}>
           <AdvancedMarker
@@ -263,7 +350,6 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
         </React.Fragment>
       ))}
 
-      {/* Modal for biome details */}
       {modalOpen && selectedBiome && (
         <div className="biome-modal-backdrop" onClick={() => setModalOpen(false)}>
           <div className="biome-modal pop-in" onClick={(e) => e.stopPropagation()}>
@@ -281,14 +367,11 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
               <div className="section-title">Predicted species</div>
               <div className="chips">
                 {selectedBiome.species.slice(0,20).map((s) => {
-                  const cacheKey = `${s.scientific_name || s.common_name}::${selectedBiome.biome}`;
-                  const isActive = activeSpeciesKey === cacheKey;
+                  const key = `species::${s.common_name}::${selectedBiome.biome_name}`;
+                  const isActive = activeDetailKey === key;
                   return (
-                    <span
-                      key={s.scientific_name}
-                      className={`chip ${isActive ? 'active' : ''}`}
-                      onClick={() => setActiveSpeciesKey(cacheKey)}
-                    >
+                    <span key={key} className={`chip ${isActive ? 'active' : ''}`}
+                          onClick={() => setActiveDetailKey(key)}>
                       {s.common_name} <em className="chip-sub">{s.phenophase}</em>
                     </span>
                   );
@@ -298,23 +381,42 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
             <div className="biome-section">
               <div className="section-title">Predicted pests</div>
               <div className="chips">
-                {selectedBiome.pests.slice(0,20).map((p) => (
-                  <span key={p.scientific_name_pest} className="chip chip-danger">
-                    {p.common_name_pest}
-                  </span>
-                ))}
+                {selectedBiome.pests.slice(0,20).map((p) => {
+                  const key = `pest::${p.common_name_pest}::${selectedBiome.biome_name}`;
+                  const isActive = activeDetailKey === key;
+                  return (
+                    <span key={key} className={`chip chip-danger ${isActive ? 'active' : ''}`}
+                          onClick={() => setActiveDetailKey(key)}>
+                      {p.common_name_pest}
+                    </span>
+                  );
+                })}
               </div>
             </div>
+            
             <div className="biome-section">
-              <div className="section-title">Flower summary</div>
-              {isBatchLoading ? (
-                <div className="summary loading">Loading all summaries…</div>
+              <div className="section-title">Biome Overview</div>
+              {isBiomeSummaryLoading ? (
+                  <div className="summary loading">Loading biome overview…</div>
               ) : (
-                <div className="summary">
-                  {activeSpeciesKey && summaryMap[activeSpeciesKey]
-                    ? summaryMap[activeSpeciesKey]
-                    : (activeSpeciesKey ? 'Select a species to view its summary.' : 'This biome has no predicted species.')}
-                </div>
+                  <div className="summary">
+                      {biomeSummaryMap[selectedBiome.biome] || 'An overview for this biome is currently unavailable.'}
+                  </div>
+              )}
+            </div>
+
+            <div className="biome-section">
+              <div className="section-title">Details</div>
+              {isDetailSummaryLoading ? (
+                  <div className="summary loading">Fetching details…</div>
+              ) : activeDetailKey ? (
+                  <div className="summary">
+                      {detailSummaryMap[activeDetailKey] || 'Summary not available.'}
+                  </div>
+              ) : (
+                  <div className="summary placeholder">
+                    Select a species or pest from the lists above to view details.
+                  </div>
               )}
             </div>
           </div>
@@ -342,18 +444,21 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
             .chip-danger { background: rgba(239,68,68,.12); border-color: rgba(239,68,68,.25); }
             .summary { font-size: 13px; color: #e5e7eb; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); padding: 10px 12px; border-radius: 12px; line-height: 1.4; }
             .summary.loading { color: #93c5fd; border-color: rgba(147,197,253,.35); background: rgba(59,130,246,.12); }
-            .summary.error { color: #fecaca; border-color: rgba(248,113,113,.35); background: rgba(248,113,113,.12); }
+            .summary.placeholder { color: #9ca3af; }
             .biome-foot { padding: 12px 16px 16px; display: flex; gap: 8px; flex-wrap: wrap; }
             .foot-pill { font-size: 11px; color: rgba(255,255,255,.85); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); padding: 4px 8px; border-radius: 999px; }
           `}</style>
         </div>
       )}
 
-      {/* Tour JSX is unchanged... */}
       {tourActive && tourRect && (
         <>
-          <div style={{ position: 'fixed', inset: 0, zIndex: 3000 }} onClick={(e) => e.stopPropagation()} />
-          <div style={{
+          <div
+            style={{ position: 'fixed', inset: 0, zIndex: 3000 }}
+            onClick={(e) => e.stopPropagation()}
+          />
+          <div
+            style={{
               position: 'fixed',
               top: tourRect.top - 8,
               left: tourRect.left - 8,
@@ -366,7 +471,8 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
               pointerEvents: 'none',
             }}
           />
-          <div style={{
+          <div
+            style={{
               position: 'fixed',
               top: tourRect.top + tourRect.height + 12,
               left: Math.max(tourRect.left, 16),
