@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import Link from "next/link";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 type Prediction = {
@@ -36,9 +35,7 @@ type Anomaly = {
 };
 
 export default function PredictionAnalysisPage() {
-  const [selectedRegion, setSelectedRegion] = useState("north-america");
-  const [selectedTimeframe, setSelectedTimeframe] = useState("30-days");
-
+  
   const scope = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
@@ -204,39 +201,7 @@ export default function PredictionAnalysisPage() {
             <p data-subtitle className="text-emerald-400">Advanced forecasting powered by machine learning</p>
           </div>
 
-          <div className="flex flex-wrap gap-3">
-            <div className="flex items-center gap-2">
-              <label htmlFor="region" className="text-sm text-neutral-300">Region</label>
-              <select
-                id="region"
-                value={selectedRegion}
-                onChange={(e) => setSelectedRegion(e.target.value)}
-                className="w-48 rounded-md border border-white/10 bg-neutral-900 px-3 py-2 text-sm text-neutral-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
-              >
-                <option value="north-america">North America</option>
-                <option value="europe">Europe</option>
-                <option value="asia">Asia</option>
-                <option value="south-america">South America</option>
-                <option value="africa">Africa</option>
-                <option value="australia">Australia</option>
-              </select>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <label htmlFor="timeframe" className="text-sm text-neutral-300">Timeframe</label>
-              <select
-                id="timeframe"
-                value={selectedTimeframe}
-                onChange={(e) => setSelectedTimeframe(e.target.value)}
-                className="w-40 rounded-md border border-white/10 bg-neutral-900 px-3 py-2 text-sm text-neutral-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
-              >
-                <option value="30-days">30 Days</option>
-                <option value="90-days">90 Days</option>
-                <option value="1-year">1 Year</option>
-              </select>
-            </div>
-          </div>
-        </div>
+                  </div>
 
         
         
