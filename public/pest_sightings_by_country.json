@@ -1,0 +1,5662 @@
+[
+    {
+        "country":"AGO",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"AGO",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":1
+    },
+    {
+        "country":"ALA",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"ALA",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":2
+    },
+    {
+        "country":"ALA",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"ALA",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":1
+    },
+    {
+        "country":"ALB",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":1
+    },
+    {
+        "country":"ALB",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":2
+    },
+    {
+        "country":"ALB",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":1
+    },
+    {
+        "country":"ALB",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"ALB",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":11
+    },
+    {
+        "country":"ALB",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"ALB",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":1
+    },
+    {
+        "country":"AND",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":2
+    },
+    {
+        "country":"AND",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":1
+    },
+    {
+        "country":"AND",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":4
+    },
+    {
+        "country":"AND",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":3
+    },
+    {
+        "country":"AND",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":2
+    },
+    {
+        "country":"AND",
+        "common_name_pest":"Spongy Moth",
+        "sightings":17
+    },
+    {
+        "country":"AND",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":3
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":10
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":34
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Codling Moth",
+        "sightings":5
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":3
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":5
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":52
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":2
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":28
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":3
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":4
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":3
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":43
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":2
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":1
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":53
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":10
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":7
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Spongy Moth",
+        "sightings":1
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":11
+    },
+    {
+        "country":"ARG",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":11
+    },
+    {
+        "country":"ARM",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":1
+    },
+    {
+        "country":"ARM",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"ARM",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"ARM",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":1
+    },
+    {
+        "country":"ARM",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":4
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":9
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":111
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Codling Moth",
+        "sightings":125
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":44
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":3
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":172
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":14
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":10
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":36
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":8
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":11
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":56
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":6
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":1
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":40
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":15
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":14
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Spongy Moth",
+        "sightings":6
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":25
+    },
+    {
+        "country":"AUS",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":16
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":8
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":88
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Codling Moth",
+        "sightings":182
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":156
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":10
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":169
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":98
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":188
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":262
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":21
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":67
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":443
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":103
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":17
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":61
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":41
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":5
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Spongy Moth",
+        "sightings":61
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":161
+    },
+    {
+        "country":"AUT",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":230
+    },
+    {
+        "country":"AZE",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":2
+    },
+    {
+        "country":"AZE",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":1
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":1
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":55
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"Codling Moth",
+        "sightings":33
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":12
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":17
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":20
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":44
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":2
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":9
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":48
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":5
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":28
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"Spongy Moth",
+        "sightings":15
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":86
+    },
+    {
+        "country":"BEL",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":12
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":3
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":6
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Codling Moth",
+        "sightings":5
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":7
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":3
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":1
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":2
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":3
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":2
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":5
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":4
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":2
+    },
+    {
+        "country":"BGR",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":1
+    },
+    {
+        "country":"BIH",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":5
+    },
+    {
+        "country":"BIH",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"BIH",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":5
+    },
+    {
+        "country":"BIH",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":1
+    },
+    {
+        "country":"BIH",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":4
+    },
+    {
+        "country":"BIH",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":3
+    },
+    {
+        "country":"BIH",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":2
+    },
+    {
+        "country":"BIH",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":4
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":2
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Codling Moth",
+        "sightings":23
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":27
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":45
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":20
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":77
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":19
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":9
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":13
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":63
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":4
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":5
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":19
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Spongy Moth",
+        "sightings":7
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":9
+    },
+    {
+        "country":"BLR",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":46
+    },
+    {
+        "country":"BMU",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":2
+    },
+    {
+        "country":"BMU",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":1
+    },
+    {
+        "country":"BMU",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":1
+    },
+    {
+        "country":"BMU",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":2
+    },
+    {
+        "country":"BOL",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":2
+    },
+    {
+        "country":"BOL",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"BOL",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":15
+    },
+    {
+        "country":"BOL",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":4
+    },
+    {
+        "country":"BOL",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":16
+    },
+    {
+        "country":"BOL",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":2
+    },
+    {
+        "country":"BOL",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":26
+    },
+    {
+        "country":"BOL",
+        "common_name_pest":"Spongy Moth",
+        "sightings":5
+    },
+    {
+        "country":"BOL",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":2
+    },
+    {
+        "country":"BRA",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":1
+    },
+    {
+        "country":"BRA",
+        "common_name_pest":"Codling Moth",
+        "sightings":7
+    },
+    {
+        "country":"BRA",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":2
+    },
+    {
+        "country":"BRA",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":3
+    },
+    {
+        "country":"BRA",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":2
+    },
+    {
+        "country":"BRA",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"BRA",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":1
+    },
+    {
+        "country":"BRA",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"BRA",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":2
+    },
+    {
+        "country":"BRA",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"BRA",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":2
+    },
+    {
+        "country":"BRA",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":2
+    },
+    {
+        "country":"BTN",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":2
+    },
+    {
+        "country":"BTN",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":1
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":144
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":1373
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Codling Moth",
+        "sightings":1677
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":3463
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":557
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":524
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":1492
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":7888
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":1411
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":993
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":4213
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":2665
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":802
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":1074
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":367
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1382
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":62
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Spongy Moth",
+        "sightings":1644
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":2486
+    },
+    {
+        "country":"CAN",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":1638
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":10
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":84
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Codling Moth",
+        "sightings":25
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":35
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":2
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":20
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":21
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":28
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":38
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":2
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":4
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":83
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":17
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":68
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":2
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Spongy Moth",
+        "sightings":6
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":56
+    },
+    {
+        "country":"CHE",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":16
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":1
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":47
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Codling Moth",
+        "sightings":19
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":5
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":37
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":4
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":1
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":1
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":11
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":44
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":4
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":3
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":4
+    },
+    {
+        "country":"CHL",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":3
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":50
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":47
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Codling Moth",
+        "sightings":9
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":12
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":6
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":35
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":8
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":7
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":23
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":6
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":5
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":65
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":12
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":8
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":32
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":4
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":13
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Spongy Moth",
+        "sightings":7
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":56
+    },
+    {
+        "country":"CHN",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":16
+    },
+    {
+        "country":"COL",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":1
+    },
+    {
+        "country":"COL",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":1
+    },
+    {
+        "country":"COL",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"COL",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":2
+    },
+    {
+        "country":"COL",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":4
+    },
+    {
+        "country":"COL",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":1
+    },
+    {
+        "country":"COL",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":8
+    },
+    {
+        "country":"COL",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":2
+    },
+    {
+        "country":"COL",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":1
+    },
+    {
+        "country":"COL",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"COL",
+        "common_name_pest":"Spongy Moth",
+        "sightings":2
+    },
+    {
+        "country":"COL",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":3
+    },
+    {
+        "country":"COL",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":2
+    },
+    {
+        "country":"CRI",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"CRI",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":2
+    },
+    {
+        "country":"CYP",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":3
+    },
+    {
+        "country":"CYP",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":2
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":11
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":11
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Codling Moth",
+        "sightings":55
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":87
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":21
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":9
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":30
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":116
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":93
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":6
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":25
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":201
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":4
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":50
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":12
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":1
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Spongy Moth",
+        "sightings":27
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":67
+    },
+    {
+        "country":"CZE",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":48
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":21
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":371
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Codling Moth",
+        "sightings":353
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":292
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":8
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":178
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":125
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":53
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":456
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":14
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":79
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":691
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":121
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":12
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":230
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":19
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Spongy Moth",
+        "sightings":101
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":527
+    },
+    {
+        "country":"DEU",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":120
+    },
+    {
+        "country":"DNK",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":55
+    },
+    {
+        "country":"DNK",
+        "common_name_pest":"Codling Moth",
+        "sightings":30
+    },
+    {
+        "country":"DNK",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":21
+    },
+    {
+        "country":"DNK",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":36
+    },
+    {
+        "country":"DNK",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":26
+    },
+    {
+        "country":"DNK",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":74
+    },
+    {
+        "country":"DNK",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":2
+    },
+    {
+        "country":"DNK",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":58
+    },
+    {
+        "country":"DNK",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":35
+    },
+    {
+        "country":"DNK",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":1
+    },
+    {
+        "country":"DNK",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":16
+    },
+    {
+        "country":"DNK",
+        "common_name_pest":"Spongy Moth",
+        "sightings":6
+    },
+    {
+        "country":"DNK",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":60
+    },
+    {
+        "country":"DNK",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":5
+    },
+    {
+        "country":"DZA",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":1
+    },
+    {
+        "country":"DZA",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":4
+    },
+    {
+        "country":"DZA",
+        "common_name_pest":"Codling Moth",
+        "sightings":2
+    },
+    {
+        "country":"DZA",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"DZA",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"DZA",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":5
+    },
+    {
+        "country":"DZA",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":2
+    },
+    {
+        "country":"DZA",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":4
+    },
+    {
+        "country":"DZA",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":10
+    },
+    {
+        "country":"DZA",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":1
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":4
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":7
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"Codling Moth",
+        "sightings":2
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":16
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":7
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":4
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":2
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":5
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":3
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":7
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":5
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"Spongy Moth",
+        "sightings":2
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":2
+    },
+    {
+        "country":"ECU",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":1
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":64
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":200
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Codling Moth",
+        "sightings":120
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":74
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":17
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":308
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":33
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":32
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":100
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":28
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":43
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":144
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":24
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":7
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":202
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":34
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":33
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Spongy Moth",
+        "sightings":44
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":102
+    },
+    {
+        "country":"ESP",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":38
+    },
+    {
+        "country":"EST",
+        "common_name_pest":"Codling Moth",
+        "sightings":6
+    },
+    {
+        "country":"EST",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":3
+    },
+    {
+        "country":"EST",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"EST",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":1
+    },
+    {
+        "country":"EST",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":4
+    },
+    {
+        "country":"EST",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":3
+    },
+    {
+        "country":"EST",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":2
+    },
+    {
+        "country":"EST",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"EST",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":1
+    },
+    {
+        "country":"EST",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":3
+    },
+    {
+        "country":"EST",
+        "common_name_pest":"Spongy Moth",
+        "sightings":10
+    },
+    {
+        "country":"EST",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":3
+    },
+    {
+        "country":"EST",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":1
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":5
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Codling Moth",
+        "sightings":219
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":195
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":20
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":1
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":267
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":48
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":183
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":18
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":43
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":34
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":18
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":20
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":9
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":16
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Spongy Moth",
+        "sightings":44
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":146
+    },
+    {
+        "country":"FIN",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":84
+    },
+    {
+        "country":"FLK",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":1
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":76
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":246
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Codling Moth",
+        "sightings":138
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":96
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":13
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":280
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":61
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":55
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":192
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":16
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":51
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":259
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":58
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":6
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":210
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":8
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":19
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Spongy Moth",
+        "sightings":21
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":284
+    },
+    {
+        "country":"FRA",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":50
+    },
+    {
+        "country":"FRO",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"FRO",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":1
+    },
+    {
+        "country":"FRO",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":1
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":7
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":874
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Codling Moth",
+        "sightings":863
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":36
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":372
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":461
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":519
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":16
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":17
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":570
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":192
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":220
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":4
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Spongy Moth",
+        "sightings":176
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":865
+    },
+    {
+        "country":"GBR",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":39
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":1
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":7
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Codling Moth",
+        "sightings":4
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":8
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":1
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":2
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":2
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":2
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":2
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":6
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":1
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":2
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":6
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":6
+    },
+    {
+        "country":"GEO",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":1
+    },
+    {
+        "country":"GGY",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":4
+    },
+    {
+        "country":"GIB",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":2
+    },
+    {
+        "country":"GIB",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":1
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":4
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":6
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":19
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":1
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":1
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":4
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":2
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":5
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":29
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":2
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":2
+    },
+    {
+        "country":"GRC",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":1
+    },
+    {
+        "country":"GRL",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":7
+    },
+    {
+        "country":"GRL",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":19
+    },
+    {
+        "country":"GRL",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":17
+    },
+    {
+        "country":"GRL",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":5
+    },
+    {
+        "country":"GRL",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":3
+    },
+    {
+        "country":"GRL",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":5
+    },
+    {
+        "country":"GTM",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"GTM",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":1
+    },
+    {
+        "country":"GTM",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":1
+    },
+    {
+        "country":"GTM",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":1
+    },
+    {
+        "country":"GTM",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":1
+    },
+    {
+        "country":"HKG",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"HKG",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":1
+    },
+    {
+        "country":"HKG",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":1
+    },
+    {
+        "country":"HND",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":1
+    },
+    {
+        "country":"HND",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":1
+    },
+    {
+        "country":"HND",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":1
+    },
+    {
+        "country":"HND",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":8
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":12
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Codling Moth",
+        "sightings":7
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":5
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":18
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":4
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":4
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":4
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":7
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":18
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":1
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":27
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":5
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":4
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Spongy Moth",
+        "sightings":1
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":17
+    },
+    {
+        "country":"HRV",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":2
+    },
+    {
+        "country":"HTI",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":1
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":15
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":5
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Codling Moth",
+        "sightings":44
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":6
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":4
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":4
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":6
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":25
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":29
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":2
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":11
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":21
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":7
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":3
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":9
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":3
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":9
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Spongy Moth",
+        "sightings":7
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":20
+    },
+    {
+        "country":"HUN",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":12
+    },
+    {
+        "country":"IDN",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":1
+    },
+    {
+        "country":"IMN",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":1
+    },
+    {
+        "country":"IMN",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"IMN",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":2
+    },
+    {
+        "country":"IMN",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":2
+    },
+    {
+        "country":"IND",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":1
+    },
+    {
+        "country":"IND",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"IND",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":2
+    },
+    {
+        "country":"IND",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":2
+    },
+    {
+        "country":"IND",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"IND",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":2
+    },
+    {
+        "country":"IRL",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":57
+    },
+    {
+        "country":"IRL",
+        "common_name_pest":"Codling Moth",
+        "sightings":21
+    },
+    {
+        "country":"IRL",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":24
+    },
+    {
+        "country":"IRL",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":15
+    },
+    {
+        "country":"IRL",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":23
+    },
+    {
+        "country":"IRL",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":22
+    },
+    {
+        "country":"IRL",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":44
+    },
+    {
+        "country":"IRL",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":2
+    },
+    {
+        "country":"IRL",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":34
+    },
+    {
+        "country":"IRL",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":4
+    },
+    {
+        "country":"IRN",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":2
+    },
+    {
+        "country":"IRN",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":4
+    },
+    {
+        "country":"IRN",
+        "common_name_pest":"Codling Moth",
+        "sightings":3
+    },
+    {
+        "country":"IRN",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"IRN",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":2
+    },
+    {
+        "country":"IRN",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":8
+    },
+    {
+        "country":"IRN",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":1
+    },
+    {
+        "country":"IRN",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"IRN",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":4
+    },
+    {
+        "country":"IRN",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":14
+    },
+    {
+        "country":"IRN",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"IRN",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":1
+    },
+    {
+        "country":"IRN",
+        "common_name_pest":"Spongy Moth",
+        "sightings":2
+    },
+    {
+        "country":"IRN",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":4
+    },
+    {
+        "country":"IRQ",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"IRQ",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":1
+    },
+    {
+        "country":"ISL",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":1
+    },
+    {
+        "country":"ISL",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":11
+    },
+    {
+        "country":"ISL",
+        "common_name_pest":"Codling Moth",
+        "sightings":2
+    },
+    {
+        "country":"ISL",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":13
+    },
+    {
+        "country":"ISL",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":2
+    },
+    {
+        "country":"ISL",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":9
+    },
+    {
+        "country":"ISL",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":1
+    },
+    {
+        "country":"ISL",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":4
+    },
+    {
+        "country":"ISL",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":5
+    },
+    {
+        "country":"ISL",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":15
+    },
+    {
+        "country":"ISL",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":4
+    },
+    {
+        "country":"ISR",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":2
+    },
+    {
+        "country":"ISR",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":3
+    },
+    {
+        "country":"ISR",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":14
+    },
+    {
+        "country":"ISR",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":3
+    },
+    {
+        "country":"ISR",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":2
+    },
+    {
+        "country":"ISR",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":3
+    },
+    {
+        "country":"ISR",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":10
+    },
+    {
+        "country":"ISR",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":2
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":71
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":133
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Codling Moth",
+        "sightings":50
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":40
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":20
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":163
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":43
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":87
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":122
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":16
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":67
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":117
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":31
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":7
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":225
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":68
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":67
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Spongy Moth",
+        "sightings":25
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":105
+    },
+    {
+        "country":"ITA",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":67
+    },
+    {
+        "country":"JEY",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"JOR",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":123
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":19
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Codling Moth",
+        "sightings":6
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":7
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":6
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":57
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":14
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":77
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":10
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":11
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":18
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":162
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":4
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":12
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":7
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":33
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":58
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Spongy Moth",
+        "sightings":7
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":29
+    },
+    {
+        "country":"JPN",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":32
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":21
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Codling Moth",
+        "sightings":24
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":9
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":3
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":13
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":3
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":18
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":1
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":6
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":7
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":1
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":11
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":2
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Spongy Moth",
+        "sightings":5
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":5
+    },
+    {
+        "country":"KAZ",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":8
+    },
+    {
+        "country":"KEN",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":1
+    },
+    {
+        "country":"KEN",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":2
+    },
+    {
+        "country":"KEN",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"KEN",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":2
+    },
+    {
+        "country":"KEN",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":3
+    },
+    {
+        "country":"KEN",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"KGZ",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":1
+    },
+    {
+        "country":"KGZ",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"KGZ",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":3
+    },
+    {
+        "country":"KGZ",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":1
+    },
+    {
+        "country":"KGZ",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":2
+    },
+    {
+        "country":"KGZ",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":4
+    },
+    {
+        "country":"KGZ",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":6
+    },
+    {
+        "country":"KGZ",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":2
+    },
+    {
+        "country":"KGZ",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":5
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":4
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":13
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":4
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":13
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":4
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":1
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":11
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":2
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":25
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":11
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":3
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":3
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":3
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Spongy Moth",
+        "sightings":5
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":9
+    },
+    {
+        "country":"KOR",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":1
+    },
+    {
+        "country":"LIE",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":1
+    },
+    {
+        "country":"LIE",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"LIE",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":1
+    },
+    {
+        "country":"LIE",
+        "common_name_pest":"Spongy Moth",
+        "sightings":1
+    },
+    {
+        "country":"LKA",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":4
+    },
+    {
+        "country":"LSO",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":3
+    },
+    {
+        "country":"LSO",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":1
+    },
+    {
+        "country":"LSO",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":1
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":6
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":3
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Codling Moth",
+        "sightings":10
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":22
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":16
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":6
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":27
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":9
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":10
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":18
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":3
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":7
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":12
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Spongy Moth",
+        "sightings":10
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":14
+    },
+    {
+        "country":"LTU",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":1
+    },
+    {
+        "country":"LUX",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":44
+    },
+    {
+        "country":"LUX",
+        "common_name_pest":"Codling Moth",
+        "sightings":8
+    },
+    {
+        "country":"LUX",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":13
+    },
+    {
+        "country":"LUX",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":8
+    },
+    {
+        "country":"LUX",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":2
+    },
+    {
+        "country":"LUX",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":12
+    },
+    {
+        "country":"LUX",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":76
+    },
+    {
+        "country":"LUX",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":4
+    },
+    {
+        "country":"LUX",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":22
+    },
+    {
+        "country":"LUX",
+        "common_name_pest":"Spongy Moth",
+        "sightings":1
+    },
+    {
+        "country":"LUX",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":28
+    },
+    {
+        "country":"LUX",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":1
+    },
+    {
+        "country":"LVA",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"LVA",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":3
+    },
+    {
+        "country":"LVA",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"LVA",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":1
+    },
+    {
+        "country":"LVA",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"LVA",
+        "common_name_pest":"Spongy Moth",
+        "sightings":6
+    },
+    {
+        "country":"LVA",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":1
+    },
+    {
+        "country":"LVA",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":1
+    },
+    {
+        "country":"MAR",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":1
+    },
+    {
+        "country":"MAR",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"MAR",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":1
+    },
+    {
+        "country":"MCO",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"MCO",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":1
+    },
+    {
+        "country":"MDA",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":2
+    },
+    {
+        "country":"MDA",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":2
+    },
+    {
+        "country":"MDA",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":7
+    },
+    {
+        "country":"MDA",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":11
+    },
+    {
+        "country":"MDA",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":2
+    },
+    {
+        "country":"MDA",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":2
+    },
+    {
+        "country":"MDA",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"MDA",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":1
+    },
+    {
+        "country":"MDA",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":1
+    },
+    {
+        "country":"MDA",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"MDA",
+        "common_name_pest":"Spongy Moth",
+        "sightings":1
+    },
+    {
+        "country":"MDA",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":5
+    },
+    {
+        "country":"MDG",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"MDG",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":1
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":31
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":127
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Codling Moth",
+        "sightings":46
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":37
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":22
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":197
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":12
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":7
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":21
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":10
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":10
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":54
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":5
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":2
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":107
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":44
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":72
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Spongy Moth",
+        "sightings":1
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":40
+    },
+    {
+        "country":"MEX",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":25
+    },
+    {
+        "country":"MKD",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":2
+    },
+    {
+        "country":"MKD",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":1
+    },
+    {
+        "country":"MKD",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":1
+    },
+    {
+        "country":"MKD",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":1
+    },
+    {
+        "country":"MKD",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":1
+    },
+    {
+        "country":"MKD",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":2
+    },
+    {
+        "country":"MKD",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":2
+    },
+    {
+        "country":"MLT",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":3
+    },
+    {
+        "country":"MLT",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"MLT",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":3
+    },
+    {
+        "country":"MLT",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":3
+    },
+    {
+        "country":"MNE",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":4
+    },
+    {
+        "country":"MNE",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":2
+    },
+    {
+        "country":"MNE",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"MNE",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":1
+    },
+    {
+        "country":"MNE",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":2
+    },
+    {
+        "country":"MNE",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":3
+    },
+    {
+        "country":"MNE",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":3
+    },
+    {
+        "country":"MNE",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":13
+    },
+    {
+        "country":"MNG",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":5
+    },
+    {
+        "country":"MNG",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"MNG",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"MNG",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":1
+    },
+    {
+        "country":"MNG",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":1
+    },
+    {
+        "country":"MNG",
+        "common_name_pest":"Spongy Moth",
+        "sightings":2
+    },
+    {
+        "country":"MNG",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":1
+    },
+    {
+        "country":"MUS",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"MUS",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":1
+    },
+    {
+        "country":"MUS",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":1
+    },
+    {
+        "country":"NFK",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":1
+    },
+    {
+        "country":"NLD",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":2
+    },
+    {
+        "country":"NLD",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":33
+    },
+    {
+        "country":"NLD",
+        "common_name_pest":"Codling Moth",
+        "sightings":25
+    },
+    {
+        "country":"NLD",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":55
+    },
+    {
+        "country":"NLD",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":22
+    },
+    {
+        "country":"NLD",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":29
+    },
+    {
+        "country":"NLD",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":42
+    },
+    {
+        "country":"NLD",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":68
+    },
+    {
+        "country":"NLD",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":17
+    },
+    {
+        "country":"NLD",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":19
+    },
+    {
+        "country":"NLD",
+        "common_name_pest":"Spongy Moth",
+        "sightings":6
+    },
+    {
+        "country":"NLD",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":63
+    },
+    {
+        "country":"NLD",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":4
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":11
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Codling Moth",
+        "sightings":8
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":7
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":12
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":4
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":18
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":7
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":4
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":6
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":9
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":2
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":4
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":3
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Spongy Moth",
+        "sightings":11
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":77
+    },
+    {
+        "country":"NOR",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":8
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":4
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":318
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Codling Moth",
+        "sightings":175
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":50
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":355
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":46
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":91
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":34
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":2
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":150
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":42
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":2
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":36
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":4
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Spongy Moth",
+        "sightings":2
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":84
+    },
+    {
+        "country":"NZL",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":16
+    },
+    {
+        "country":"PAK",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":1
+    },
+    {
+        "country":"PAK",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"PAK",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":2
+    },
+    {
+        "country":"PAK",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"PAK",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":1
+    },
+    {
+        "country":"PER",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":4
+    },
+    {
+        "country":"PER",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"PER",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":2
+    },
+    {
+        "country":"PER",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":8
+    },
+    {
+        "country":"PER",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":1
+    },
+    {
+        "country":"PER",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":2
+    },
+    {
+        "country":"PER",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":1
+    },
+    {
+        "country":"PER",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":1
+    },
+    {
+        "country":"PER",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"PER",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":1
+    },
+    {
+        "country":"PER",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":3
+    },
+    {
+        "country":"PER",
+        "common_name_pest":"Spongy Moth",
+        "sightings":1
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":4
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":18
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Codling Moth",
+        "sightings":136
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":129
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":31
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":12
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":86
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":139
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":87
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":45
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":82
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":217
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":31
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":17
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":38
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":22
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Spongy Moth",
+        "sightings":71
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":219
+    },
+    {
+        "country":"POL",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":184
+    },
+    {
+        "country":"PRI",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":1
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":8
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":61
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Codling Moth",
+        "sightings":50
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":17
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":117
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":11
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":27
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":19
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":3
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":44
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":23
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":5
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":9
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":105
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":15
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":18
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Spongy Moth",
+        "sightings":20
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":23
+    },
+    {
+        "country":"PRT",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":9
+    },
+    {
+        "country":"PSE",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":1
+    },
+    {
+        "country":"PSE",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":1
+    },
+    {
+        "country":"PSE",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":4
+    },
+    {
+        "country":"PSE",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":2
+    },
+    {
+        "country":"PSE",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":1
+    },
+    {
+        "country":"PSE",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":2
+    },
+    {
+        "country":"PSE",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":1
+    },
+    {
+        "country":"REU",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"REU",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":1
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":11
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":5
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Codling Moth",
+        "sightings":21
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":8
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":9
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":2
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":15
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":16
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":10
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":18
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":26
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":2
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":5
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":6
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":5
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Spongy Moth",
+        "sightings":1
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":10
+    },
+    {
+        "country":"ROU",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":10
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":25
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":69
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Codling Moth",
+        "sightings":268
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":797
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":162
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":54
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":474
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":783
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":323
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":129
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":372
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":355
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":95
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":112
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":380
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":224
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":13
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Spongy Moth",
+        "sightings":295
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":368
+    },
+    {
+        "country":"RUS",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":375
+    },
+    {
+        "country":"SGS",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":1
+    },
+    {
+        "country":"SGS",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":3
+    },
+    {
+        "country":"SJM",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":1
+    },
+    {
+        "country":"SMR",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":2
+    },
+    {
+        "country":"SMR",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":1
+    },
+    {
+        "country":"SPM",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":2
+    },
+    {
+        "country":"SPM",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"SPM",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":1
+    },
+    {
+        "country":"SRB",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":2
+    },
+    {
+        "country":"SRB",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"SRB",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":7
+    },
+    {
+        "country":"SRB",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":4
+    },
+    {
+        "country":"SRB",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":2
+    },
+    {
+        "country":"SRB",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":3
+    },
+    {
+        "country":"SRB",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":4
+    },
+    {
+        "country":"SRB",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":6
+    },
+    {
+        "country":"SRB",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":1
+    },
+    {
+        "country":"SRB",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"SRB",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":4
+    },
+    {
+        "country":"SRB",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":7
+    },
+    {
+        "country":"SRB",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":2
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":5
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":3
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Codling Moth",
+        "sightings":5
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":32
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":5
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":12
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":7
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":58
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":33
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":23
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":23
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":1
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":3
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":2
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":10
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Spongy Moth",
+        "sightings":10
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":15
+    },
+    {
+        "country":"SVK",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":110
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":3
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":2
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":6
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":4
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":1
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":3
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":1
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":2
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":10
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":1
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":2
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":2
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":4
+    },
+    {
+        "country":"SVN",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":7
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":1
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":7
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Codling Moth",
+        "sightings":33
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":36
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":13
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":6
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":15
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":27
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":20
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":24
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":43
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":13
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":8
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":8
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":2
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Spongy Moth",
+        "sightings":24
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":43
+    },
+    {
+        "country":"SWE",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":10
+    },
+    {
+        "country":"SWZ",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"SYR",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"SYR",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":4
+    },
+    {
+        "country":"TJK",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"TJK",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":2
+    },
+    {
+        "country":"TUN",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":1
+    },
+    {
+        "country":"TUN",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":1
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":2
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":46
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Codling Moth",
+        "sightings":9
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":12
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":3
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":56
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":5
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":2
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":6
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":2
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":3
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":43
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":2
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":44
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":1
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":3
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Spongy Moth",
+        "sightings":5
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":4
+    },
+    {
+        "country":"TUR",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":10
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":18
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":1
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":2
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":7
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":7
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":2
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":1
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":11
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":17
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":5
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":2
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":2
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":2
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":27
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Spongy Moth",
+        "sightings":1
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":11
+    },
+    {
+        "country":"TWN",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":7
+    },
+    {
+        "country":"TZA",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":1
+    },
+    {
+        "country":"TZA",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":4
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":49
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Codling Moth",
+        "sightings":62
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":110
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":32
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":30
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":92
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":267
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":55
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":15
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":131
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":253
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":23
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":7
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":91
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":31
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":2
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Spongy Moth",
+        "sightings":40
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":122
+    },
+    {
+        "country":"UKR",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":152
+    },
+    {
+        "country":"URY",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":2
+    },
+    {
+        "country":"URY",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":3
+    },
+    {
+        "country":"URY",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"URY",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"URY",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":3
+    },
+    {
+        "country":"URY",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":5
+    },
+    {
+        "country":"URY",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":3
+    },
+    {
+        "country":"URY",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":2
+    },
+    {
+        "country":"URY",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":1
+    },
+    {
+        "country":"URY",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":3
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":6040
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":15296
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Codling Moth",
+        "sightings":7678
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":9911
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":5531
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":8442
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":4848
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":29203
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":5892
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":6213
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":18227
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":12472
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Ipsilon Dart Moth",
+        "sightings":3432
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":4534
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":5186
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":15762
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":7333
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Spongy Moth",
+        "sightings":3441
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":11830
+    },
+    {
+        "country":"USA",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":6793
+    },
+    {
+        "country":"UZB",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":6
+    },
+    {
+        "country":"UZB",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":2
+    },
+    {
+        "country":"UZB",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"UZB",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"UZB",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":4
+    },
+    {
+        "country":"UZB",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":1
+    },
+    {
+        "country":"UZB",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":1
+    },
+    {
+        "country":"UZB",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"UZB",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":4
+    },
+    {
+        "country":"UZB",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":1
+    },
+    {
+        "country":"VAT",
+        "common_name_pest":"Codling Moth",
+        "sightings":1
+    },
+    {
+        "country":"VAT",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":1
+    },
+    {
+        "country":"VAT",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":2
+    },
+    {
+        "country":"VEN",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":1
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Asian Tiger Mosquito",
+        "sightings":23
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Cabbage Aphid",
+        "sightings":49
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Codling Moth",
+        "sightings":15
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Colorado Potato Beetle",
+        "sightings":19
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Corn Earworm Moth",
+        "sightings":2
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Cottony cushion scale",
+        "sightings":105
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Diamondback Moth",
+        "sightings":3
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Emerald Ash Borer",
+        "sightings":2
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"European Corn Borer Moth",
+        "sightings":8
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Fall Armyworm Moth",
+        "sightings":1
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Grape Phylloxera",
+        "sightings":8
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Indian-Meal Moth",
+        "sightings":19
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Japanese Beetle",
+        "sightings":1
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Mediterranean Fruit Fly",
+        "sightings":50
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Potato Leafhopper",
+        "sightings":14
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Red Imported Fire Ant",
+        "sightings":5
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Spotted-winged Drosophila",
+        "sightings":4
+    },
+    {
+        "country":"ZAF",
+        "common_name_pest":"Western Corn Rootworm",
+        "sightings":13
+    }
+]

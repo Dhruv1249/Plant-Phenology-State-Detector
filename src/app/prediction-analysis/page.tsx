@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
-import Link from "next/link";
+import { useState, useRef, useEffect } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
+import Script from "next/script";
 
 type Prediction = {
   date: string;
@@ -36,10 +36,15 @@ type Anomaly = {
 };
 
 export default function PredictionAnalysisPage() {
-  const [selectedRegion, setSelectedRegion] = useState("north-america");
-  const [selectedTimeframe, setSelectedTimeframe] = useState("30-days");
-
+  
   const scope = useRef<HTMLDivElement | null>(null);
+  const plotRef = useRef<HTMLDivElement | null>(null);
+  const [figure, setFigure] = useState<any | null>(null);
+  const [plotlyReady, setPlotlyReady] = useState(false);
+  const mapRef = useRef<HTMLDivElement | null>(null);
+  const [countryMap, setCountryMap] = useState<any | null>(null);
+  const sankeyRef = useRef<HTMLDivElement | null>(null);
+  const [sankey, setSankey] = useState<any | null>(null);
 
   useGSAP(() => {
     const q = gsap.utils.selector(scope);
@@ -83,6 +88,300 @@ export default function PredictionAnalysisPage() {
     });
   }, { scope });
 
+  // Load prism figure
+  useEffect(() => {
+    fetch("/biome_pest_prism.json")
+      .then((res) => res.json())
+      .then((json) => {
+        try {
+          const fig: any = { ...json };
+          const layout: any = { ...(fig.layout || {}) };
+          layout.paper_bgcolor = "rgba(0,0,0,0)";
+          layout.plot_bgcolor = "rgba(0,0,0,0)";
+          layout.font = { ...(layout.font || {}), color: "#e5e7eb" };
+          layout.title = "";
+          layout.margin = { ...(layout.margin || {}), t: 20, r: 60 };
+          layout.scene = {
+            ...(layout.scene || {}),
+            bgcolor: "rgba(0,0,0,0)",
+            xaxis: {
+              ...(layout.scene?.xaxis || {}),
+              backgroundcolor: "rgba(0,0,0,0)",
+              gridcolor: "rgba(255,255,255,0.12)",
+              linecolor: "rgba(255,255,255,0.25)",
+              zerolinecolor: "rgba(255,255,255,0.25)",
+              tickfont: { ...(layout.scene?.xaxis?.tickfont || {}), color: "#e5e7eb" },
+              title: { ...(layout.scene?.xaxis?.title || {}), font: { color: "#e5e7eb" } },
+            },
+            yaxis: {
+              ...(layout.scene?.yaxis || {}),
+              backgroundcolor: "rgba(0,0,0,0)",
+              gridcolor: "rgba(255,255,255,0.12)",
+              linecolor: "rgba(255,255,255,0.25)",
+              zerolinecolor: "rgba(255,255,255,0.25)",
+              tickfont: { ...(layout.scene?.yaxis?.tickfont || {}), color: "#e5e7eb" },
+              title: { ...(layout.scene?.yaxis?.title || {}), font: { color: "#e5e7eb" } },
+            },
+            zaxis: {
+              ...(layout.scene?.zaxis || {}),
+              backgroundcolor: "rgba(0,0,0,0)",
+              gridcolor: "rgba(255,255,255,0.12)",
+              linecolor: "rgba(255,255,255,0.25)",
+              zerolinecolor: "rgba(255,255,255,0.25)",
+              tickfont: { ...(layout.scene?.zaxis?.tickfont || {}), color: "#e5e7eb" },
+              title: { ...(layout.scene?.zaxis?.title || {}), font: { color: "#e5e7eb" } },
+            },
+            camera: { eye: { x: 1.8, y: -1.8, z: 1.8 } },
+          };
+          const data = Array.isArray(fig.data)
+            ? fig.data.map((t: any) => {
+                if (t.type === "mesh3d") {
+                  const zVals = Array.isArray(t.z) ? (t.z as number[]).filter((v) => Number.isFinite(v)) : [];
+                  const zMin = zVals.length ? Math.min(...zVals) : undefined;
+                  const zMax = zVals.length ? Math.max(...zVals) : undefined;
+                  const ticks =
+                    zMin !== undefined && zMax !== undefined
+                      ? Array.from({ length: 5 }, (_, i) => Math.round(zMin + (i * (zMax - zMin)) / 4))
+                      : undefined;
+                  return {
+                    ...t,
+                    opacity: 1,
+                    intensity: zVals.length ? zVals : t.intensity,
+                    intensitymode: "vertex",
+                    colorscale: "Turbo",
+                    reversescale: false,
+                    cmin: zMin,
+                    cmax: zMax,
+                    flatshading: true,
+                    lighting: {
+                      ambient: 0.6,
+                      diffuse: 1,
+                      specular: 0.2,
+                      roughness: 0.5,
+                      fresnel: 0.05,
+                    },
+                    lightposition: { x: 100, y: -200, z: 300 },
+                    showscale: true,
+                    colorbar: {
+                      ...(t.colorbar || {}),
+                      tickfont: { color: "#e5e7eb", size: 11 },
+                      title: { text: "Sightings", font: { color: "#e5e7eb", size: 12 }, side: "top" },
+                      ticks: "outside",
+                      tickmode: ticks ? "array" : "auto",
+                      tickvals: ticks,
+                      ticktext: ticks ? ticks.map((v) => (typeof v === "number" ? v.toLocaleString() : String(v))) : undefined,
+                      tickformat: ticks ? undefined : "~s",
+                      thickness: 16,
+                      len: 0.9,
+                      x: 1.05,
+                      xanchor: "left",
+                      y: 0.5,
+                      yanchor: "middle",
+                      bgcolor: "rgba(0,0,0,0)",
+                      outlinecolor: "rgba(255,255,255,0.1)",
+                      outlinewidth: 1,
+                    },
+                    hovertemplate: "Biome: %{x}<br>Pest: %{y}<br>Sightings: %{z}<extra></extra>",
+                  };
+                }
+                return t;
+              })
+            : fig.data;
+          setFigure({ ...fig, data, layout });
+        } catch {
+          setFigure(json);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  
+  // Render prism
+  useEffect(() => {
+    const Plotly = (window as any)?.Plotly;
+    if (plotlyReady && figure && plotRef.current && Plotly) {
+      try {
+        const layout = { 
+          ...(figure.layout || {}), 
+          paper_bgcolor: "#0a0a0a", 
+          plot_bgcolor: "#0a0a0a", 
+          scene: { ...(figure.layout?.scene || {}), bgcolor: "#0a0a0a" },
+        } as any;
+        
+        const config = {
+          responsive: true,
+          displayModeBar: false,
+          displaylogo: false,
+        } as any;
+        
+        Plotly.newPlot(plotRef.current, figure.data, layout, config);
+      } catch {}
+    }
+  }, [plotlyReady, figure]);
+
+  
+  // Load and prepare country pest sightings choropleth
+  useEffect(() => {
+    fetch("/pest_sightings_by_country.json")
+      .then((res) => res.json())
+      .then((rows: any[]) => {
+        try {
+          const byCountry: Record<string, Record<string, number>> = {};
+          for (const r of rows) {
+            if (!r || !r.country || !r.common_name_pest) continue;
+            const c = String(r.country);
+            const pest = String(r.common_name_pest);
+            const n = Number(r.sightings) || 0;
+            if (!byCountry[c]) byCountry[c] = {};
+            byCountry[c][pest] = (byCountry[c][pest] || 0) + n;
+          }
+          const locations: string[] = [];
+          const z: number[] = [];
+          const text: string[] = [];
+          Object.entries(byCountry).forEach(([code, pests]) => {
+            const totals = Object.values(pests);
+            const total = totals.reduce((a: number, b: number) => a + b, 0);
+            const top = Object.entries(pests)
+              .sort((a, b) => b[1] - a[1])
+              .slice(0, 3)
+              .map(([name, count]) => `${name} (${count.toLocaleString()})`)
+              .join(", ");
+            locations.push(code);
+            z.push(total);
+            text.push(`${code}<br>Total: ${total.toLocaleString()}<br>Top: ${top}`);
+          });
+          const trace: any = {
+            type: "choropleth",
+            locationmode: "ISO-3",
+            locations,
+            z,
+            text,
+            zmin: 0,
+            colorscale: "YlOrRd",
+            reversescale: false,
+            marker: { line: { color: "rgba(0,0,0,0)", width: 0 } },
+            colorbar: {
+              tickfont: { color: "#e5e7eb", size: 11 },
+              title: { text: "Total sightings", font: { color: "#e5e7eb", size: 12 }, side: "top" },
+              bgcolor: "rgba(0,0,0,0)",
+              outlinecolor: "rgba(255,255,255,0.1)",
+              outlinewidth: 1,
+              thickness: 16,
+              len: 0.9,
+              x: 1.05,
+              xanchor: "left",
+              y: 0.5,
+              yanchor: "middle",
+            },
+            hovertemplate: "%{text}<extra></extra>",
+            showscale: true,
+          };
+          const layout: any = {
+            paper_bgcolor: "rgba(0,0,0,0)",
+            plot_bgcolor: "rgba(0,0,0,0)",
+            margin: { t: 10, r: 60, l: 10, b: 10 },
+            geo: {
+              bgcolor: "rgba(0,0,0,0)",
+              showframe: false,
+              showcoastlines: false,
+              projection: { type: "natural earth" },
+              landcolor: "rgba(255,255,255,0.03)",
+              subunitcolor: "rgba(255,255,255,0.1)",
+              countrycolor: "rgba(255,255,255,0.1)",
+            },
+          };
+          setCountryMap({ data: [trace], layout });
+        } catch {
+          setCountryMap(null);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  // Render choropleth
+  useEffect(() => {
+    const Plotly = (window as any)?.Plotly;
+    if (plotlyReady && countryMap && mapRef.current && Plotly) {
+      try {
+        const layout = { 
+          ...(countryMap.layout || {}), 
+          paper_bgcolor: "#0a0a0a", 
+          plot_bgcolor: "#0a0a0a", 
+          geo: { ...(countryMap.layout?.geo || {}), bgcolor: "#0a0a0a" },
+        } as any;
+        const config = {
+          responsive: true,
+          displayModeBar: false,
+          displaylogo: false,
+        } as any;
+        Plotly.newPlot(mapRef.current, countryMap.data, layout, config);
+      } catch {}
+    }
+  }, [plotlyReady, countryMap]);
+
+  
+  // Load sankey data (plant-pest interactions)
+  useEffect(() => {
+    fetch("/sankey_data_light.json")
+      .then((res) => res.json())
+      .then((json) => {
+        try {
+          const nodes = Array.isArray(json?.nodes?.label) ? json.nodes.label : [];
+          const links = json?.links || {};
+          const trace: any = {
+            type: "sankey",
+            orientation: "h",
+            arrangement: "snap",
+            node: {
+              label: nodes,
+              pad: 12,
+              thickness: 14,
+              line: { color: "rgba(255,255,255,0.15)", width: 1 },
+              color: "rgba(16,185,129,0.2)",
+            },
+            link: {
+              source: Array.isArray(links.source) ? links.source : [],
+              target: Array.isArray(links.target) ? links.target : [],
+              value: Array.isArray(links.value) ? links.value : [],
+              color: "rgba(236,72,153,0.20)",
+            },
+            hoverlabel: { bgcolor: "#111827", bordercolor: "#374151", font: { color: "#e5e7eb" } },
+          };
+          const layout: any = {
+            paper_bgcolor: "rgba(0,0,0,0)",
+            plot_bgcolor: "rgba(0,0,0,0)",
+            font: { color: "#e5e7eb" },
+            margin: { t: 20, r: 20, b: 20, l: 20 },
+          };
+          setSankey({ data: [trace], layout });
+        } catch {
+          setSankey(null);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  // Render sankey
+  useEffect(() => {
+    const Plotly = (window as any)?.Plotly;
+    if (plotlyReady && sankey && sankeyRef.current && Plotly) {
+      try {
+        const layout = {
+          ...(sankey.layout || {}),
+          paper_bgcolor: "#0a0a0a",
+          plot_bgcolor: "#0a0a0a",
+        } as any;
+        const config = {
+          responsive: true,
+          displayModeBar: false,
+          displaylogo: false,
+        } as any;
+        Plotly.newPlot(sankeyRef.current, sankey.data, layout, config);
+      } catch {}
+    }
+  }, [plotlyReady, sankey]);
+
+  
   // Mock prediction data
   const futurePredictions: Prediction[] = [
     { date: "2024-10-01", probability: 75, temperature: 18, blooms: 2800 },
@@ -196,6 +495,20 @@ export default function PredictionAnalysisPage() {
 
   return (
     <div ref={scope} className="min-h-screen bg-neutral-950 text-neutral-100 p-6 pt-24 sm:pt-28">
+      <Script src="https://cdn.plot.ly/plotly-2.27.0.min.js" strategy="afterInteractive" onLoad={() => setPlotlyReady(true)} />
+      <style jsx global>{`
+        .js-plotly-plot .plotly .modebar,
+        .js-plotly-plot .plotly .modebar-container,
+        .modebar,
+        .modebar-container,
+        .modebar-group,
+        .modebar-btn {
+          display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          pointer-events: none !important;
+        }
+      `}</style>
       <div className="mx-auto max-w-7xl space-y-6">
         {/* Header */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -204,225 +517,40 @@ export default function PredictionAnalysisPage() {
             <p data-subtitle className="text-emerald-400">Advanced forecasting powered by machine learning</p>
           </div>
 
-          <div className="flex flex-wrap gap-3">
-            <div className="flex items-center gap-2">
-              <label htmlFor="region" className="text-sm text-neutral-300">Region</label>
-              <select
-                id="region"
-                value={selectedRegion}
-                onChange={(e) => setSelectedRegion(e.target.value)}
-                className="w-48 rounded-md border border-white/10 bg-neutral-900 px-3 py-2 text-sm text-neutral-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
-              >
-                <option value="north-america">North America</option>
-                <option value="europe">Europe</option>
-                <option value="asia">Asia</option>
-                <option value="south-america">South America</option>
-                <option value="africa">Africa</option>
-                <option value="australia">Australia</option>
-              </select>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <label htmlFor="timeframe" className="text-sm text-neutral-300">Timeframe</label>
-              <select
-                id="timeframe"
-                value={selectedTimeframe}
-                onChange={(e) => setSelectedTimeframe(e.target.value)}
-                className="w-40 rounded-md border border-white/10 bg-neutral-900 px-3 py-2 text-sm text-neutral-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
-              >
-                <option value="30-days">30 Days</option>
-                <option value="90-days">90 Days</option>
-                <option value="1-year">1 Year</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        {/* AI Model Stats */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
-          {[
-            { label: "Model Accuracy", value: "87.3%", sub: "Last 30 days", color: "purple" },
-            { label: "Predictions Made", value: "12,847", sub: "This month", color: "blue" },
-            { label: "Active Alerts", value: "3", sub: "Anomalies detected", color: "orange" },
-            { label: "Next Update", value: "6h", sub: "Model refresh", color: "green" },
-          ].map((stat) => (
-            <div data-stat key={stat.label} className="rounded-lg border border-white/10 bg-neutral-900 p-6 shadow-none">
-              <p className="text-sm text-neutral-300">{stat.label}</p>
-              <p className="text-2xl font-bold text-white">{stat.value}</p>
-              <p className="text-sm text-neutral-400">{stat.sub}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Prediction Overview */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          {/* Bloom Probability Over Time */}
-          <div data-section className="rounded-lg border border-white/10 bg-neutral-900">
-            <div className="border-b border-white/10 p-5">
-              <h2 className="flex items-center gap-2 text-lg font-semibold text-emerald-300">
-                <span>Bloom Probability Forecast</span>
-              </h2>
-            </div>
-            <div className="p-5">
-              <div className="space-y-3">
-                {futurePredictions.map((row) => (
-                  <div key={row.date} className="flex items-center gap-3">
-                    <div className="w-28 shrink-0 text-sm text-neutral-400">
-                      {formatDate(row.date)}
-                    </div>
-                    <div className="relative h-3 flex-1 rounded-full bg-white/10">
-                      <div
-                        className="h-3 rounded-full bg-violet-500/60"
-                        style={{ width: `${row.probability}%` }}
-                      />
-                    </div>
-                    <div className="w-14 shrink-0 text-right text-sm font-medium text-violet-300">
-                      {row.probability}%
-                    </div>
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
 
-          {/* Temperature vs Bloom Correlation */}
-          <div data-section className="rounded-lg border border-white/10 bg-neutral-900">
-            <div className="border-b border-white/10 p-5">
-              <h2 className="text-lg font-semibold text-emerald-300">Temperature Impact Prediction</h2>
-            </div>
-            <div className="p-5">
-              <div className="grid grid-cols-3 gap-2 border-b border-white/10 pb-2 text-xs font-medium text-neutral-400">
-                <div>Date</div>
-                <div className="text-center">Blooms</div>
-                <div className="text-right">Temperature (°C)</div>
-              </div>
-              <div className="divide-y divide-white/10">
-                {futurePredictions.map((row) => (
-                  <div key={row.date} className="grid grid-cols-3 gap-2 py-2 text-sm">
-                    <div className="text-neutral-300">{formatDate(row.date)}</div>
-                    <div className="text-center text-emerald-300">{row.blooms.toLocaleString()}</div>
-                    <div className="text-right text-amber-300">{row.temperature}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bloom Phase Timeline */}
-        <div data-section className="rounded-lg border border-white/10 bg-neutral-900">
+        <div data-section className="rounded-lg border border-white/10 bg-neutral-950">
           <div className="border-b border-white/10 p-5">
-            <h2 className="flex items-center gap-2 text-lg font-semibold text-emerald-300">
-              <span>Predicted Bloom Phase Timeline</span>
-            </h2>
+            <h2 className="text-lg font-semibold text-emerald-300">Biome Pest Prism</h2>
           </div>
           <div className="p-5">
-            <div className="space-y-4">
-              {bloomPhases.map((phase, idx) => (
-                <div key={idx} className="flex items-center justify-between rounded-lg bg-neutral-800 p-4">
-                  <div className="flex items-center gap-4">
-                    <div
-                      className={`h-4 w-4 rounded-full ${phase.status === "current" ? "bg-green-500" : "bg-gray-300"}`}
-                    />
-                    <div>
-                      <h4 className="font-medium text-neutral-100">{phase.phase}</h4>
-                      <p className="text-sm text-neutral-400">Duration: {phase.duration}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div>
-                      <p className="text-sm text-neutral-400">Confidence</p>
-                      <div className="h-2 w-24 rounded-full bg-white/10">
-                        <div
-                          className="h-2 rounded-full bg-green-500"
-                          style={{ width: `${phase.confidence}%` }}
-                        />
-                      </div>
-                    </div>
-                    <span className="text-sm font-medium text-emerald-300">{phase.confidence}%</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <div ref={plotRef} className="w-full" style={{ minHeight: 600, backgroundColor: "#0a0a0a" }} />
           </div>
         </div>
 
-        {/* Future Bloom Hotspots */}
-        <div data-section className="rounded-lg border border-white/10 bg-neutral-900">
+        <div data-section className="rounded-lg border border-white/10 bg-neutral-950">
           <div className="border-b border-white/10 p-5">
-            <h2 className="flex items-center gap-2 text-lg font-semibold text-emerald-300">
-              <span>Predicted Bloom Hotspots</span>
-            </h2>
+            <h2 className="text-lg font-semibold text-emerald-300">Pest Sightings by Country</h2>
           </div>
           <div className="p-5">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {hotspots.map((hotspot, index) => (
-                <div key={index} className="rounded-lg border border-white/10 p-4 transition-shadow hover:shadow-md">
-                  <div className="mb-2 flex items-start justify-between">
-                    <div>
-                      <h4 className="font-medium text-neutral-100">{hotspot.region}</h4>
-                      <p className="text-sm text-neutral-400">{hotspot.country}</p>
-                    </div>
-                    <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${getRiskColor(hotspot.risk)}`}>
-                      {hotspot.risk} risk
-                    </span>
-                  </div>
-                  <div className="space-y-1 text-sm">
-                    <p>
-                      <span className="text-emerald-400">Bloom Type:</span> {hotspot.bloomType}
-                    </p>
-                    <p>
-                      <span className="text-emerald-400">Peak Date:</span> {hotspot.peakDate}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-neutral-300">Confidence:</span>
-                      <div className="flex items-center gap-2">
-                        <div className="h-2 w-20 rounded-full bg-white/10">
-                          <div
-                            className="h-2 rounded-full bg-green-500"
-                            style={{ width: `${hotspot.confidence}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-medium">{hotspot.confidence}%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <div ref={mapRef} className="w-full" style={{ minHeight: 520, backgroundColor: "#0a0a0a" }} />
+            <p className="mt-3 text-sm text-neutral-400">
+              Hover a country to see total sightings and top reported pests.
+            </p>
           </div>
         </div>
 
-        {/* Anomaly Alerts */}
-        <div data-section className="rounded-lg border border-white/10 bg-neutral-900">
+        <div data-section className="rounded-lg border border-white/10 bg-neutral-950">
           <div className="border-b border-white/10 p-5">
-            <h2 className="flex items-center gap-2 text-lg font-semibold text-emerald-300">
-              <span>Anomaly Detection Alerts</span>
-            </h2>
+            <h2 className="text-lg font-semibold text-emerald-300">Plant–Pest Interaction Sankey</h2>
           </div>
           <div className="p-5">
-            <div className="space-y-4">
-              {anomalies.map((anomaly, index) => (
-                <div key={index} className="flex flex-col gap-2 rounded-md border-l-4 border-orange-400 bg-orange-400/10 p-4 text-sm">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h4 className="font-medium text-neutral-100">{anomaly.region}</h4>
-                      <p className="text-neutral-400">{anomaly.type}</p>
-                    </div>
-                    <span className={`rounded border px-2 py-0.5 text-xs font-medium ${getSeverityColor(anomaly.severity)}`}>
-                      {anomaly.severity} severity
-                    </span>
-                  </div>
-                  <p className="text-emerald-400">{anomaly.description}</p>
-                  <p className="text-neutral-300">
-                    <strong>Potential Impact:</strong> {anomaly.impact}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <div ref={sankeyRef} className="w-full" style={{ minHeight: 520, backgroundColor: "#0a0a0a" }} />
+            <p className="mt-3 text-sm text-neutral-400">Flow of relationships between plant groups and pests.</p>
           </div>
         </div>
-      </div>
+
+        </div>
     </div>
   );
 }

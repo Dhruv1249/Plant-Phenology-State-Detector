@@ -1,0 +1,9 @@
+# .dockerignore
+
+__pycache__/
+*.pyc
+.venv/
+.git/
+.vscode/
+.qodo/
+.late_prediciton/
