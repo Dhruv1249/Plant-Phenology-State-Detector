@@ -5,7 +5,7 @@ import path from 'path';
 export const runtime = 'nodejs';
 
 // --- NEW: Separate cache for biome summaries ---
-const CACHE_DIR = path.join(process.cwd(), 'data');
+const CACHE_DIR = path.join('/tmp');
 const CACHE_FILE = path.join(CACHE_DIR, 'biome-summaries.json');
 
 interface BiomeData {

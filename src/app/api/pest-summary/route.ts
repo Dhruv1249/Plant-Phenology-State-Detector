@@ -4,7 +4,7 @@ import path from 'path';
 
 export const runtime = 'nodejs';
 
-const CACHE_DIR = path.join(process.cwd(), 'data');
+const CACHE_DIR = path.join('/tmp');
 const CACHE_FILE = path.join(CACHE_DIR, 'pest-summaries.json');
 
 async function readCache(): Promise<Record<string, any>> {

@@ -376,12 +376,8 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
                 pixelOffset={[0, -45]}
                 className="hover-infowindow">
                 <div className="hover-content">
-                  <h4>{result.biome_name}</h4>
-                  <div className="stats">
-                    <span>Temperature: {result.climate_data.temperature}°C      </span>
-                    <span>Precipitation: {result.climate_data.precipitation} mm/d</span>
-                  </div>
-                  <em>Click pin for full details regarding flowers/pests and blooming....</em>
+                  
+                  <h2><i>Click pin for full details regarding flowers/pests and blooming....</i></h2>
                 </div>
               </InfoWindow>
             )}
