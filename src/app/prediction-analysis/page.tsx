@@ -238,22 +238,7 @@ export default function PredictionAnalysisPage() {
           </div>
         </div>
 
-        {/* AI Model Stats */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
-          {[
-            { label: "Model Accuracy", value: "87.3%", sub: "Last 30 days", color: "purple" },
-            { label: "Predictions Made", value: "12,847", sub: "This month", color: "blue" },
-            { label: "Active Alerts", value: "3", sub: "Anomalies detected", color: "orange" },
-            { label: "Next Update", value: "6h", sub: "Model refresh", color: "green" },
-          ].map((stat) => (
-            <div data-stat key={stat.label} className="rounded-lg border border-white/10 bg-neutral-900 p-6 shadow-none">
-              <p className="text-sm text-neutral-300">{stat.label}</p>
-              <p className="text-2xl font-bold text-white">{stat.value}</p>
-              <p className="text-sm text-neutral-400">{stat.sub}</p>
-            </div>
-          ))}
-        </div>
-
+        
         {/* Prediction Overview */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {/* Bloom Probability Over Time */}
