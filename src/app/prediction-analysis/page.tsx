@@ -41,6 +41,10 @@ export default function PredictionAnalysisPage() {
   const plotRef = useRef<HTMLDivElement | null>(null);
   const [figure, setFigure] = useState<any | null>(null);
   const [plotlyReady, setPlotlyReady] = useState(false);
+  const mapRef = useRef<HTMLDivElement | null>(null);
+  const [countryMap, setCountryMap] = useState<any | null>(null);
+  const sankeyRef = useRef<HTMLDivElement | null>(null);
+  const [sankey, setSankey] = useState<any | null>(null);
 
   useGSAP(() => {
     const q = gsap.utils.selector(scope);
@@ -84,6 +88,7 @@ export default function PredictionAnalysisPage() {
     });
   }, { scope });
 
+  // Load prism figure
   useEffect(() => {
     fetch("/biome_pest_prism.json")
       .then((res) => res.json())
@@ -190,16 +195,193 @@ export default function PredictionAnalysisPage() {
       .catch(() => {});
   }, []);
 
+  
+  // Render prism
   useEffect(() => {
     const Plotly = (window as any)?.Plotly;
     if (plotlyReady && figure && plotRef.current && Plotly) {
       try {
-        const layout = { ...(figure.layout || {}), paper_bgcolor: "#0a0a0a", plot_bgcolor: "#0a0a0a", scene: { ...(figure.layout?.scene || {}), bgcolor: "#0a0a0a" } } as any;
-        Plotly.newPlot(plotRef.current, figure.data, layout, { responsive: true, displayModeBar: false, displaylogo: false });
+        const layout = { 
+          ...(figure.layout || {}), 
+          paper_bgcolor: "#0a0a0a", 
+          plot_bgcolor: "#0a0a0a", 
+          scene: { ...(figure.layout?.scene || {}), bgcolor: "#0a0a0a" },
+        } as any;
+        
+        const config = {
+          responsive: true,
+          displayModeBar: false,
+          displaylogo: false,
+        } as any;
+        
+        Plotly.newPlot(plotRef.current, figure.data, layout, config);
       } catch {}
     }
   }, [plotlyReady, figure]);
 
+  
+  // Load and prepare country pest sightings choropleth
+  useEffect(() => {
+    fetch("/pest_sightings_by_country.json")
+      .then((res) => res.json())
+      .then((rows: any[]) => {
+        try {
+          const byCountry: Record<string, Record<string, number>> = {};
+          for (const r of rows) {
+            if (!r || !r.country || !r.common_name_pest) continue;
+            const c = String(r.country);
+            const pest = String(r.common_name_pest);
+            const n = Number(r.sightings) || 0;
+            if (!byCountry[c]) byCountry[c] = {};
+            byCountry[c][pest] = (byCountry[c][pest] || 0) + n;
+          }
+          const locations: string[] = [];
+          const z: number[] = [];
+          const text: string[] = [];
+          Object.entries(byCountry).forEach(([code, pests]) => {
+            const totals = Object.values(pests);
+            const total = totals.reduce((a: number, b: number) => a + b, 0);
+            const top = Object.entries(pests)
+              .sort((a, b) => b[1] - a[1])
+              .slice(0, 3)
+              .map(([name, count]) => `${name} (${count.toLocaleString()})`)
+              .join(", ");
+            locations.push(code);
+            z.push(total);
+            text.push(`${code}<br>Total: ${total.toLocaleString()}<br>Top: ${top}`);
+          });
+          const trace: any = {
+            type: "choropleth",
+            locationmode: "ISO-3",
+            locations,
+            z,
+            text,
+            zmin: 0,
+            colorscale: "YlOrRd",
+            reversescale: false,
+            marker: { line: { color: "rgba(0,0,0,0)", width: 0 } },
+            colorbar: {
+              tickfont: { color: "#e5e7eb", size: 11 },
+              title: { text: "Total sightings", font: { color: "#e5e7eb", size: 12 }, side: "top" },
+              bgcolor: "rgba(0,0,0,0)",
+              outlinecolor: "rgba(255,255,255,0.1)",
+              outlinewidth: 1,
+              thickness: 16,
+              len: 0.9,
+              x: 1.05,
+              xanchor: "left",
+              y: 0.5,
+              yanchor: "middle",
+            },
+            hovertemplate: "%{text}<extra></extra>",
+            showscale: true,
+          };
+          const layout: any = {
+            paper_bgcolor: "rgba(0,0,0,0)",
+            plot_bgcolor: "rgba(0,0,0,0)",
+            margin: { t: 10, r: 60, l: 10, b: 10 },
+            geo: {
+              bgcolor: "rgba(0,0,0,0)",
+              showframe: false,
+              showcoastlines: false,
+              projection: { type: "natural earth" },
+              landcolor: "rgba(255,255,255,0.03)",
+              subunitcolor: "rgba(255,255,255,0.1)",
+              countrycolor: "rgba(255,255,255,0.1)",
+            },
+          };
+          setCountryMap({ data: [trace], layout });
+        } catch {
+          setCountryMap(null);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  // Render choropleth
+  useEffect(() => {
+    const Plotly = (window as any)?.Plotly;
+    if (plotlyReady && countryMap && mapRef.current && Plotly) {
+      try {
+        const layout = { 
+          ...(countryMap.layout || {}), 
+          paper_bgcolor: "#0a0a0a", 
+          plot_bgcolor: "#0a0a0a", 
+          geo: { ...(countryMap.layout?.geo || {}), bgcolor: "#0a0a0a" },
+        } as any;
+        const config = {
+          responsive: true,
+          displayModeBar: false,
+          displaylogo: false,
+        } as any;
+        Plotly.newPlot(mapRef.current, countryMap.data, layout, config);
+      } catch {}
+    }
+  }, [plotlyReady, countryMap]);
+
+  
+  // Load sankey data (plant-pest interactions)
+  useEffect(() => {
+    fetch("/sankey_data_light.json")
+      .then((res) => res.json())
+      .then((json) => {
+        try {
+          const nodes = Array.isArray(json?.nodes?.label) ? json.nodes.label : [];
+          const links = json?.links || {};
+          const trace: any = {
+            type: "sankey",
+            orientation: "h",
+            arrangement: "snap",
+            node: {
+              label: nodes,
+              pad: 12,
+              thickness: 14,
+              line: { color: "rgba(255,255,255,0.15)", width: 1 },
+              color: "rgba(16,185,129,0.2)",
+            },
+            link: {
+              source: Array.isArray(links.source) ? links.source : [],
+              target: Array.isArray(links.target) ? links.target : [],
+              value: Array.isArray(links.value) ? links.value : [],
+              color: "rgba(236,72,153,0.20)",
+            },
+            hoverlabel: { bgcolor: "#111827", bordercolor: "#374151", font: { color: "#e5e7eb" } },
+          };
+          const layout: any = {
+            paper_bgcolor: "rgba(0,0,0,0)",
+            plot_bgcolor: "rgba(0,0,0,0)",
+            font: { color: "#e5e7eb" },
+            margin: { t: 20, r: 20, b: 20, l: 20 },
+          };
+          setSankey({ data: [trace], layout });
+        } catch {
+          setSankey(null);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  // Render sankey
+  useEffect(() => {
+    const Plotly = (window as any)?.Plotly;
+    if (plotlyReady && sankey && sankeyRef.current && Plotly) {
+      try {
+        const layout = {
+          ...(sankey.layout || {}),
+          paper_bgcolor: "#0a0a0a",
+          plot_bgcolor: "#0a0a0a",
+        } as any;
+        const config = {
+          responsive: true,
+          displayModeBar: false,
+          displaylogo: false,
+        } as any;
+        Plotly.newPlot(sankeyRef.current, sankey.data, layout, config);
+      } catch {}
+    }
+  }, [plotlyReady, sankey]);
+
+  
   // Mock prediction data
   const futurePredictions: Prediction[] = [
     { date: "2024-10-01", probability: 75, temperature: 18, blooms: 2800 },
@@ -314,6 +496,19 @@ export default function PredictionAnalysisPage() {
   return (
     <div ref={scope} className="min-h-screen bg-neutral-950 text-neutral-100 p-6 pt-24 sm:pt-28">
       <Script src="https://cdn.plot.ly/plotly-2.27.0.min.js" strategy="afterInteractive" onLoad={() => setPlotlyReady(true)} />
+      <style jsx global>{`
+        .js-plotly-plot .plotly .modebar,
+        .js-plotly-plot .plotly .modebar-container,
+        .modebar,
+        .modebar-container,
+        .modebar-group,
+        .modebar-btn {
+          display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          pointer-events: none !important;
+        }
+      `}</style>
       <div className="mx-auto max-w-7xl space-y-6">
         {/* Header */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -333,11 +528,29 @@ export default function PredictionAnalysisPage() {
           </div>
         </div>
 
-        
-        
-        
-        
-              </div>
+        <div data-section className="rounded-lg border border-white/10 bg-neutral-950">
+          <div className="border-b border-white/10 p-5">
+            <h2 className="text-lg font-semibold text-emerald-300">Pest Sightings by Country</h2>
+          </div>
+          <div className="p-5">
+            <div ref={mapRef} className="w-full" style={{ minHeight: 520, backgroundColor: "#0a0a0a" }} />
+            <p className="mt-3 text-sm text-neutral-400">
+              Hover a country to see total sightings and top reported pests.
+            </p>
+          </div>
+        </div>
+
+        <div data-section className="rounded-lg border border-white/10 bg-neutral-950">
+          <div className="border-b border-white/10 p-5">
+            <h2 className="text-lg font-semibold text-emerald-300">Plant–Pest Interaction Sankey</h2>
+          </div>
+          <div className="p-5">
+            <div ref={sankeyRef} className="w-full" style={{ minHeight: 520, backgroundColor: "#0a0a0a" }} />
+            <p className="mt-3 text-sm text-neutral-400">Flow of relationships between plant groups and pests.</p>
+          </div>
+        </div>
+
+        </div>
     </div>
   );
 }
