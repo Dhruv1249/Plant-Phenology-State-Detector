@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useEffect, useState, useCallback } from 'react';
+// Make sure useCallback is imported
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { 
   APIProvider, 
   Map as GoogleMap, 
@@ -23,25 +24,28 @@ export default function Map2Page(): React.ReactElement {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [darkMode, setDarkMode] = useState<boolean>(true);
-
-  // State for the marker location
   const [selectedPlace, setSelectedPlace] = useState<google.maps.places.PlaceResult | null>(null);
   
-  // State to hold the map instance itself
-  const [mapInstance, setMapInstance] = useState<google.maps.Map | null>(null);
+  const mapRef = useRef<google.maps.Map | null>(null);
 
-  // A stable callback function to pan the map
+  // --- FIX: Wrap onMapLoad in useCallback to create a stable function ---
+  const onMapLoad = useCallback((map: google.maps.Map) => {
+    mapRef.current = map;
+  }, []); // The empty dependency array [] ensures this function is created only once.
+
   const panToPlace = useCallback((place: google.maps.places.PlaceResult) => {
-    if (!mapInstance) return;
+    const map = mapRef.current;
+    if (!map) return;
 
     const location = place.geometry?.location;
     if (location && typeof location.lat === 'function' && typeof location.lng === 'function') {
-      mapInstance.panTo(location);
-      mapInstance.setZoom(15);
+      map.panTo(location);
+      setTimeout(() => {
+        map.setZoom(15);
+      }, 100);
     }
-  }, [mapInstance]); // This function is stable as long as mapInstance is the same
+  }, []);
 
-  // Effect to fetch initial configuration
   useEffect(() => {
     const fetchConfig = async () => {
       try {
@@ -63,7 +67,7 @@ export default function Map2Page(): React.ReactElement {
   if (loading) return <RouteLoading />;
   if (error || !config) return <div>Error: {error || 'Config not available'}</div>;
   if (!config.googleMapsApiKey) return <div>Error: Google Maps API Key is missing.</div>;
-
+  
   return (
     <APIProvider apiKey={config.googleMapsApiKey} libraries={['drawing', 'geometry', 'marker', 'places']}>
       <div style={{ height: "100dvh", width: "100%", position: "relative" }}>
@@ -75,8 +79,8 @@ export default function Map2Page(): React.ReactElement {
         />
         
         <GoogleMap
-          defaultZoom={10}
-          defaultCenter={{ lat: 28.6139, lng: 77.2090 }} // Initial center (New Delhi)
+          defaultZoom={7}
+          defaultCenter={{ lat: 36.77, lng: -119.4 }}
           gestureHandling="greedy"
           mapId={config.mapId}
           colorScheme={darkMode ? "DARK": "LIGHT"}
@@ -90,15 +94,13 @@ export default function Map2Page(): React.ReactElement {
           
           {selectedPlace && <AdvancedMarker position={selectedPlace.geometry?.location} />}
 
-          {/* This component's only job is to get the map instance and lift it up */}
-          <MapHandler onMapLoad={setMapInstance} />
+          <MapHandler onMapLoad={onMapLoad} />
         </GoogleMap>
       </div>
     </APIProvider>
   );
 }
 
-// Helper component to get the map instance from the context and pass it to the parent
 function MapHandler({ onMapLoad }: { onMapLoad: (map: google.maps.Map) => void }) {
   const map = useMap();
 
