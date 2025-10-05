@@ -67,18 +67,23 @@ const StartButon1 = dynamic(() => import("@/components/Buttons/StartButon1"), { 
 
 const defaultStackCards: ScrollStackCard[] = [
   {
-    title: "Global Phenology",
-    subtitle: "Track flowering cycles around the world in real-time.",
-    badge: "Live",
+    title: "Phenology Forecasts",
+    subtitle: "Draw a region and choose a month to reveal the top 10 likely bloomers, DOY patterns, and early/on-time/late timing from 10 years of iNaturalist.",
+    badge: "Forecast",
+  },
+  {
+    title: "Pest Watch",
+    subtitle: "Track monthly pest activity by region, with host plants, environmental thresholds, and profiles for 100+ species.",
+    badge: "Pest",
   },
   {
     title: "Climate Signals",
-    subtitle: "See how temperature and rainfall shift bloom windows.",
-    badge: "Climate",
+    subtitle: "MERRA-2 temperature, precipitation, dew point, and radiation (plus ERA5 Sep 2025), with anomaly and trend views that adjust bloom windows.",
+    badge: "NASA",
   },
   {
-    title: "Habitat Explorer",
-    subtitle: "Browse biomes and their characteristic flora.",
+    title: "Biome Lens",
+    subtitle: "Köppen biomes offer habitat-aware baselines to compare regions, species assemblages, and phenophase differences.",
     badge: "Biome",
   },
 ];
@@ -168,7 +173,7 @@ function BoldTitleBlock() {
             ref={boldTitleLeft}
             className="col-span-12 md:col-start-5 md:col-span-4 md:row-start-1 text-center font-extrabold leading-tight text-5xl sm:text-6xl md:text-7xl lg:text-8xl will-change-transform"
           >
-            Kaalnetra
+            CALYX
           </span>
           <span className="col-span-12 md:col-start-5 md:col-span-4 md:row-start-2 text-center italic font-extrabold leading-tight text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
             Flora
@@ -354,7 +359,7 @@ export default function Home() {
             <h1 className="hero-title mb-8 sm:mb-10 text-4xl sm:text-6xl font-semibold tracking-tight">
               <Shuffle
                 key={`title-sync-${syncTick}-k`}
-                text="Kaalnetra"
+                text="CALYX"
                 tag="span"
                 className="normal-case"
                 style={{ fontSize: "inherit", lineHeight: "inherit" }}

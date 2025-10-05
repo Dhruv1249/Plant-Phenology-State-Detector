@@ -26,7 +26,7 @@ export default function NavBar() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/25 backdrop-blur-md">
       <div className="relative mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
         <Link href="/" className="text-white text-lg sm:text-xl font-semibold">
-          Kaalnetra
+          CALYX
         </Link>
         <nav className="absolute left-1/2 -translate-x-1/2 flex items-center gap-8 sm:gap-10 text-sm sm:text-base text-white">
           {links.map(({ name, href }) => {

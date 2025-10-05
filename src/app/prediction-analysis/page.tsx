@@ -550,6 +550,22 @@ export default function PredictionAnalysisPage() {
           </div>
         </div>
 
+        <div data-section className="rounded-lg border border-white/10 bg-neutral-950">
+          <div className="border-b border-white/10 p-5">
+            <h2 className="text-lg font-semibold text-emerald-300">Total Sightings Map </h2>
+          </div>
+          <div className="p-5">
+            <iframe
+              src="/static_total_sightings_map.html"
+              className="w-full rounded"  
+              style={{ minHeight: 520, backgroundColor: "#0a0a0a", border: "0" }}
+            />
+            <p className="mt-3 text-sm text-neutral-400">
+              Embedded static Plotly choropleth showing total sightings by country.
+            </p>
+          </div>
+        </div>
+
         </div>
     </div>
   );
