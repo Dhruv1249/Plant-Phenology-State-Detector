@@ -61,7 +61,7 @@ Follow these rules:
 
 Do not include markdown, comments, or any other text outside the JSON object.`.trim();
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`;
         const resp = await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -93,7 +93,7 @@ Do not include markdown, comments, or any other text outside the JSON object.`.t
             summary: newSummary,
             pest_name,
             biome_name,
-            modelUsed: 'gemini-2.5-flash-lite',
+            modelUsed: 'gemini-3.1-flash-lite',
             generatedAt: new Date().toISOString(),
         };
         await writeCache(cache);

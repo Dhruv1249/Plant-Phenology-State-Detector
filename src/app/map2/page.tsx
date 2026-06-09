@@ -79,6 +79,7 @@ export default function Map2Page(): React.ReactElement {
         />
         
         <GoogleMap
+          style={{ width: '100%', height: '100%' }}
           defaultZoom={7}
           defaultCenter={{ lat: 36.77, lng: -119.4 }}
           gestureHandling="greedy"

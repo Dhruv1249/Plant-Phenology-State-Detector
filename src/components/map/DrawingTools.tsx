@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useMap, AdvancedMarker, InfoWindow } from '@vis.gl/react-google-maps';
 import FLOWER_PIN from './flower pin.gif';
 
@@ -34,9 +34,18 @@ interface AnalysisResult {
 
 function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps) {
   const map = useMap();
-  const [drawingManager, setDrawingManager] = useState<google.maps.drawing.DrawingManager | null>(null);
   const [shapes, setShapes] = useState<google.maps.MVCObject[]>([]);
   const [selectedTool, setSelectedTool] = useState<string>('select');
+
+  const drawingStateRef = useRef<{
+    isDrawing: boolean;
+    startLatLng: google.maps.LatLng | null;
+    activeShape: google.maps.Rectangle | google.maps.Circle | null;
+  }>({
+    isDrawing: false,
+    startLatLng: null,
+    activeShape: null
+  });
 
   const [analysisMonth, setAnalysisMonth] = useState<number>(new Date().getMonth() + 1);
   const [analysisYear, setAnalysisYear] = useState<number>(new Date().getFullYear() + 1);
@@ -74,7 +83,7 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
     } catch { }
 
     const defs = [
-      { selector: '[data-tour="tools-shapes-group"]', title: 'Draw tools', content: 'Use Rectangle, Circle, or Polygon to draw an area for analysis.' },
+      { selector: '[data-tour="tools-shapes-group"]', title: 'Draw tools', content: 'Use Rectangle or Circle to draw an area for analysis.' },
       { selector: '[data-tour="tool-clear"]', title: 'Clear', content: 'Remove the drawn shape and reset the analysis.' },
       { selector: '[data-tour="tool-theme"]', title: 'Theme', content: 'Toggle between dark and light map themes.' },
       { selector: '[data-tour="tools-zoom-group"]', title: 'Zoom', content: 'Use + and − to zoom the map.' },
@@ -122,38 +131,153 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
   };
   const skipTour = () => finishTour();
 
+  // Change cursor and disable map dragging when drawing tool is active
   useEffect(() => {
     if (!map) return;
-    const manager = new google.maps.drawing.DrawingManager({
-      drawingMode: null,
-      drawingControl: false,
-      polygonOptions: { fillColor: '#8ab4f8', fillOpacity: 0.2, strokeWeight: 2, strokeColor: '#8ab4f8', clickable: true, editable: true },
-      rectangleOptions: { fillColor: '#8ab4f8', fillOpacity: 0.2, strokeWeight: 2, strokeColor: '#8ab4f8', clickable: true, editable: true },
-      circleOptions: { fillColor: '#8ab4f8', fillOpacity: 0.2, strokeWeight: 2, strokeColor: '#8ab4f8', clickable: true, editable: true },
-    });
-    manager.setMap(map);
-    setDrawingManager(manager);
+    if (selectedTool === 'rectangle' || selectedTool === 'circle') {
+      map.setOptions({ 
+        draggableCursor: 'crosshair',
+        gestureHandling: 'none',
+        draggable: false
+      });
+    } else {
+      map.setOptions({ 
+        draggableCursor: null,
+        gestureHandling: 'greedy',
+        draggable: true
+      });
+    }
+  }, [map, selectedTool]);
 
-    const onShapeComplete = (event: google.maps.drawing.OverlayCompleteEvent) => {
-      shapes.forEach(s => (s as any).setMap(null));
-      const newShape = event.overlay;
-      setShapes([newShape]);
-      manager.setDrawingMode(null);
+  // Handle click-and-drag drawing on the map
+  useEffect(() => {
+    if (!map || typeof google === 'undefined' || selectedTool === 'select' || selectedTool === '') return;
+
+    const listeners: google.maps.MapsEventListener[] = [];
+
+    const onMouseDown = (event: google.maps.MapMouseEvent) => {
+      const latLng = event.latLng;
+      if (!latLng) return;
+
+      drawingStateRef.current.isDrawing = true;
+      drawingStateRef.current.startLatLng = latLng;
+
+      if (selectedTool === 'rectangle') {
+        const rect = new google.maps.Rectangle({
+          bounds: {
+            north: latLng.lat(),
+            south: latLng.lat(),
+            east: latLng.lng(),
+            west: latLng.lng()
+          },
+          clickable: false,
+          editable: false,
+          draggable: false,
+          fillColor: '#8ab4f8',
+          fillOpacity: 0.2,
+          strokeWeight: 2,
+          strokeColor: '#8ab4f8',
+          map
+        });
+        drawingStateRef.current.activeShape = rect;
+      } else if (selectedTool === 'circle') {
+        const circle = new google.maps.Circle({
+          center: latLng,
+          radius: 0,
+          clickable: false,
+          editable: false,
+          draggable: false,
+          fillColor: '#8ab4f8',
+          fillOpacity: 0.2,
+          strokeWeight: 2,
+          strokeColor: '#8ab4f8',
+          map
+        });
+        drawingStateRef.current.activeShape = circle;
+      }
+    };
+
+    const onMouseMove = (event: google.maps.MapMouseEvent) => {
+      const { isDrawing, startLatLng, activeShape } = drawingStateRef.current;
+      if (!isDrawing || !startLatLng || !activeShape) return;
+
+      const latLng = event.latLng;
+      if (!latLng) return;
+
+      if (activeShape instanceof google.maps.Rectangle) {
+        const north = Math.max(startLatLng.lat(), latLng.lat());
+        const south = Math.min(startLatLng.lat(), latLng.lat());
+        const east = Math.max(startLatLng.lng(), latLng.lng());
+        const west = Math.min(startLatLng.lng(), latLng.lng());
+        activeShape.setBounds({ north, south, east, west });
+      } else if (activeShape instanceof google.maps.Circle) {
+        const distance = google.maps.geometry.spherical.computeDistanceBetween(startLatLng, latLng);
+        activeShape.setRadius(distance);
+      }
+    };
+
+    const onMouseUp = () => {
+      const { isDrawing, activeShape } = drawingStateRef.current;
+      if (!isDrawing) return;
+
+      drawingStateRef.current.isDrawing = false;
+      drawingStateRef.current.startLatLng = null;
+
+      if (activeShape) {
+        // Discard shapes that are too small (accidental clicks)
+        if (activeShape instanceof google.maps.Rectangle) {
+          const bounds = activeShape.getBounds();
+          if (bounds) {
+            const ne = bounds.getNorthEast();
+            const sw = bounds.getSouthWest();
+            if (Math.abs(ne.lat() - sw.lat()) < 0.001 || Math.abs(ne.lng() - sw.lng()) < 0.001) {
+              activeShape.setMap(null);
+              drawingStateRef.current.activeShape = null;
+              setSelectedTool('select');
+              return;
+            }
+          }
+        } else if (activeShape instanceof google.maps.Circle) {
+          const radius = activeShape.getRadius();
+          if (radius < 10) {
+            activeShape.setMap(null);
+            drawingStateRef.current.activeShape = null;
+            setSelectedTool('select');
+            return;
+          }
+        }
+
+        // Save the finished shape in React state
+        setShapes([activeShape]);
+        drawingStateRef.current.activeShape = null;
+      }
+
       setSelectedTool('select');
     };
 
-    const listener = manager.addListener('overlaycomplete', onShapeComplete);
-    return () => google.maps.event.removeListener(listener);
-  }, [map, shapes]);
+    // Listeners for drawing on the map
+    listeners.push(map.addListener('mousedown', onMouseDown));
+    listeners.push(map.addListener('mousemove', onMouseMove));
+    listeners.push(map.addListener('mouseup', onMouseUp));
+
+    // Listen to window mouseup to release drawing if mouse released outside the map
+    const onWindowMouseUp = () => {
+      onMouseUp();
+    };
+    window.addEventListener('mouseup', onWindowMouseUp);
+
+    return () => {
+      listeners.forEach(l => google.maps.event.removeListener(l));
+      window.removeEventListener('mouseup', onWindowMouseUp);
+    };
+  }, [map, selectedTool]);
 
   const handleToolSelect = (tool: string) => {
-    if (!drawingManager) return;
     setSelectedTool(tool);
-    switch (tool) {
-      case 'rectangle': drawingManager.setDrawingMode(google.maps.drawing.OverlayType.RECTANGLE); break;
-      case 'circle': drawingManager.setDrawingMode(google.maps.drawing.OverlayType.CIRCLE); break;
-      case 'polygon': drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON); break;
-      default: drawingManager.setDrawingMode(null);
+    if (tool === 'rectangle' || tool === 'circle') {
+      // Clear existing shapes before entering drawing mode
+      shapes.forEach(s => (s as any).setMap(null));
+      setShapes([]);
     }
   };
 
@@ -314,7 +438,6 @@ function DrawingTools({ darkMode, onToggleDarkMode, apiUrl }: DrawingToolsProps)
           <div data-tour="tools-shapes-group" style={{ display: 'flex', gap: '8px' }}>
             <button data-tour="tool-rectangle" onClick={() => handleToolSelect('rectangle')} style={btnStyle('rectangle')}>Rectangle</button>
             <button data-tour="tool-circle" onClick={() => handleToolSelect('circle')} style={btnStyle('circle')}>Circle</button>
-            <button data-tour="tool-polygon" onClick={() => handleToolSelect('polygon')} style={btnStyle('polygon')}>Polygon</button>
           </div>
           <button data-tour="tool-clear" onClick={deleteSelectedShape} style={{ ...btnStyle(''), background: '#374151' }}>Clear</button>
           <button data-tour="tool-theme" onClick={onToggleDarkMode} style={{ ...btnStyle(''), background: darkMode ? '#d97706' : '#1f2937' }}>{darkMode ? '☀️' : '🌙'}</button>

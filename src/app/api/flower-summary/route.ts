@@ -61,7 +61,7 @@ Here is the data you MUST process in its entirety:
 ${JSON.stringify({ scientific_name, common_name, biome_name }, null, 2)}
 `.trim();
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`;
         const resp = await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -82,7 +82,7 @@ ${JSON.stringify({ scientific_name, common_name, biome_name }, null, 2)}
             scientific_name,
             common_name,
             biome_name,
-            modelUsed: 'gemini-2.5-flash-lite',
+            modelUsed: 'gemini-3.1-flash-lite',
             generatedAt: new Date().toISOString(),
         };
         await writeCache(cache);

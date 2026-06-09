@@ -76,7 +76,7 @@ Here is the data for the biome summaries you need to generate:
 ${JSON.stringify(biomesToFetch, null, 2)}
 `.trim();
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`;
         const resp = await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -95,7 +95,7 @@ ${JSON.stringify(biomesToFetch, null, 2)}
         Object.assign(finalSummaries, newSummaries);
 
         for (const biomeCode in newSummaries) {
-            cache[biomeCode] = { summary: newSummaries[biomeCode], modelUsed: 'gemini-2.5-flash-lite' };
+            cache[biomeCode] = { summary: newSummaries[biomeCode], modelUsed: 'gemini-3.1-flash-lite' };
         }
         await writeCache(cache);
 
